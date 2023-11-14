@@ -2,14 +2,21 @@
 
 namespace Plugo\Controller;
 
-abstract class AbstractController {
+use Plugo\Services\SecurityXSS;
 
-	protected function renderView(string $template, array $data = []): string {
+abstract class AbstractController
+{
+
+	protected function renderView(string $template, array $data = []): string
+	{
 		$templatePath = dirname(__DIR__, 2) . '/templates/' . $template;
+		$securityXSS = new SecurityXSS();
+		$securityXSS->dataEscape($data);
 		return require_once dirname(__DIR__, 2) . '/templates/layout.php';
 	}
 
-    protected function redirectToRoute(string $name, array $params = []): void {
+	protected function redirectToRoute(string $name, array $params = []): void
+	{
 		$uri = $_SERVER['SCRIPT_NAME'] . "?path=" . $name;
 
 		if (!empty($params)) {
