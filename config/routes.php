@@ -2,7 +2,7 @@
 
 const ROUTES = [
     '/' => [
-        'controller' => App\Controller\HomeController::class,
+        'controller' => App\Controller\MainController::class,
         'method' => 'home',
         'name' => 'app_home'
     ],
