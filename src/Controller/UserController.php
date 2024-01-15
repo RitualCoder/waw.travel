@@ -12,28 +12,39 @@ class UserController extends AbstractController
 
     public function register(): void
     {
-
         $userManager = new UserManager();
         $user = new User();
         $authenticator = new Authenticator();
-
+    
         if ($authenticator->isLoggedIn()) {
             $this->redirectToRoute('/');
         }
-
+    
         if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
-            $user->setUsername($_POST['username']);
-            $user->setPassword($_POST['password']);
-            $user->setEmail($_POST['email']);
-
-            $userManager->add($user);
-            $authenticator->login($user->getUsername(), $user->getPassword(), $user->getEmail());
-            $this->redirectToRoute('/');
+            try {
+                $user->setUsername($_POST['username']);
+                $user->setPassword($_POST['password']);
+                $user->setEmail($_POST['email']);
+    
+                // Ajouter l'utilisateur et récupérer l'instruction PDOStatement
+                $statement = $userManager->add($user);
+    
+                // Si l'ajout est réussi, procédez à la connexion de l'utilisateur
+                if ($statement instanceof \PDOStatement) {
+                    $authenticator->login($user->getUsername(), $user->getPassword(), $user->getEmail());
+                    $this->redirectToRoute('/');
+                } else {
+                    /* $this->redirectToRoute('inscription'); */
+                    var_dump($statement);
+                }
+            } catch (\Throwable $th) {
+                /* $this->redirectToRoute('inscription'); */
+                var_dump($th);
+            }
         }
-
+    
         $this->renderView('auth/register.php', ['user' => $user]);
     }
-
     public function login(): void
     {
         $userManager = new UserManager();

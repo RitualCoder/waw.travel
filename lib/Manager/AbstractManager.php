@@ -78,7 +78,15 @@ abstract class AbstractManager {
 			if ($field != array_key_last($fields)) $query .= ', ';
 		}
 		$query .= ')';
-		return $this->executeQuery($query, $fields);
+	
+		try {
+			$statement = $this->executeQuery($query, $fields);
+			return $statement;
+		} catch (\PDOException $e) {
+			$errorMessage = $e->getMessage();
+			$errorCode = $e->getCode();
+			throw new \Exception("Database error: $errorMessage", $errorCode);
+		}
 	}
 
 	protected function update(string $class, array $fields, int $id): \PDOStatement {

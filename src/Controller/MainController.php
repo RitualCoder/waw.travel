@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Plugo\Controller\AbstractController;
 
-class HomeController extends AbstractController
+class MainController extends AbstractController
 {
     public function home(): void
     {
