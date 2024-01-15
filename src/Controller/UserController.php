@@ -6,6 +6,7 @@ use App\Manager\UserManager;
 use App\Entity\User;
 use Plugo\Services\Auth\Authenticator;
 use Plugo\Controller\AbstractController;
+use Plugo\Services\Flash\Flash;
 
 class UserController extends AbstractController
 {
@@ -15,6 +16,7 @@ class UserController extends AbstractController
         $userManager = new UserManager();
         $user = new User();
         $authenticator = new Authenticator();
+        $flash = new Flash();
 
         if ($authenticator->isLoggedIn()) {
             $this->redirectToRoute('/');
@@ -32,24 +34,21 @@ class UserController extends AbstractController
                 // Si l'ajout est réussi, procédez à la connexion de l'utilisateur
                 if ($statement instanceof \PDOStatement) {
                     $authenticator->login($user->getUsername(), $user->getPassword(), $user->getEmail());
+                    $flash->flash('register', 'Inscription réussie. Vous êtes maintenant connecté.', "error");
                     $this->redirectToRoute('/');
-                } else {
-                    /* $this->redirectToRoute('inscription'); */
-                    var_dump("ERROR");
                 }
             } catch (\Throwable $th) {
                 // Gestion des erreurs
                 switch ($th->getCode()) {
                     case '23000': // Code pour violation d'intégrité (duplication de clé)
-                        var_dump("Duplicate entry. Please choose a different username or email.");
+                        $flash->flash('register', 'Un compte est déjà existant avec cet email', "error");
                         break;
                     case 'HY000': // Code pour violation d'intégrité (duplication de clé)
-                        var_dump("An error occurred: " . $th->getMessage());
-
+                        $flash->flash('register', 'Un compte est déjà existant avec cet email', "error");
                         // Ajoutez d'autres cas au besoin
 
                     default:
-                        var_dump("An error occurred: " . $th->getMessage());
+                        $flash->flash('register', 'Une erreur est survenue', "error");
                 }
             }
         }
@@ -58,6 +57,7 @@ class UserController extends AbstractController
     }
     public function login(): void
     {
+        $flash = new Flash();
         $userManager = new UserManager();
         $authenticator = new Authenticator();
 
@@ -72,7 +72,10 @@ class UserController extends AbstractController
 
             if (password_verify($_POST['password'], $user->getPassword())) {
                 $authenticator->login($user->getUsername(), $user->getPassword(), $user->getEmail(), $user->getCreated_at());
+                $flash->flash('login', 'Connexion réussie', "success");
                 $this->redirectToRoute('/');
+            } else {
+                $flash->flash('login', 'Email ou mot de passe incorrect', "error");
             }
         }
 

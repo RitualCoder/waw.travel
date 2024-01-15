@@ -65,6 +65,16 @@ class Flash
         }
     }
 
+    public function delete_flash_message(string $name): void
+    {
+        if (!isset($_SESSION['FLASH_MESSAGES'][$name])) {
+            return;
+        }
+
+        // delete the flash message
+        unset($_SESSION['FLASH_MESSAGES'][$name]);
+    }
+
     public function flash(string $name = '', string $message = '', string $type = ''): void
     {
         if ($name !== '' && $message !== '' && $type !== '') {
