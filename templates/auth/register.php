@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Insciption</h1>
+    <h1>Inscription</h1>
 
     <form method="post">
         <label for="username">Pseudo :</label>
