@@ -29,4 +29,10 @@ const ROUTES = [
         'method' => 'add',
         'name' => 'app_add'
     ],
+
+    '/profil' => [
+        'controller' => App\Controller\UserController::class,
+        'method' => 'profil',
+        'name' => 'profil'
+    ],
 ];

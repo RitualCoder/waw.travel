@@ -5,25 +5,31 @@ namespace App\Manager;
 use App\Entity\User;
 use Plugo\Manager\AbstractManager;
 
-class UserManager extends AbstractManager {
+class UserManager extends AbstractManager
+{
 
-    public function find(int $id): mixed {
+    public function find(int $id): mixed
+    {
         return $this->readOne(User::class, ['id' => $id]);
     }
 
-    public function findOneBy(array $filters): mixed {
+    public function findOneBy(array $filters): mixed
+    {
         return $this->readOne(User::class, $filters);
     }
 
-    public function findBy(array $filters = [], array $order = [], int $limit = null, int $offset = null): mixed {
+    public function findBy(array $filters = [], array $order = [], int $limit = null, int $offset = null): mixed
+    {
         return $this->readMany(User::class, $filters, $order, $limit, $offset);
     }
 
-    public function findAll(): mixed {
+    public function findAll(): mixed
+    {
         return $this->readMany(User::class);
     }
 
-    public function add(User $user): \PDOStatement {
+    public function add(User $user): \PDOStatement
+    {
         return $this->create(User::class, [
             'username' => $user->getUsername(),
             'password' => $user->getPassword(),
@@ -32,7 +38,29 @@ class UserManager extends AbstractManager {
         ]);
     }
 
-    public function edit(User $user): \PDOStatement {
+    public function editUsername(User $user): \PDOStatement
+    {
+        return $this->update(User::class, [
+            'username' => $user->getUsername(),
+        ], $user->getId());
+    }
+
+    public function editEmail(User $user): \PDOStatement
+    {
+        return $this->update(User::class, [
+            'email' => $user->getEmail(),
+        ], $user->getId());
+    }
+
+    public function editPassword(User $user): \PDOStatement
+    {
+        return $this->update(User::class, [
+            'password' => $user->getPassword(),
+        ], $user->getId());
+    }
+
+    public function edit(User $user): \PDOStatement
+    {
         return $this->update(User::class, [
             'username' => $user->getUsername(),
             'password' => $user->getPassword(),
@@ -40,7 +68,8 @@ class UserManager extends AbstractManager {
         ], $user->getId());
     }
 
-    public function delete(User $user): \PDOStatement {
+    public function delete(User $user): \PDOStatement
+    {
         return $this->remove(User::class, $user->getId());
     }
 }
