@@ -40,13 +40,10 @@ class UserController extends AbstractController
             } catch (\Throwable $th) {
                 // Gestion des erreurs
                 switch ($th->getCode()) {
+                    case 'HY000':
                     case '23000': // Code pour violation d'intégrité (duplication de clé)
                         $flash->flash('register', 'Un compte est déjà existant avec cet email', "error");
-                        break;
-                    case 'HY000': // Code pour violation d'intégrité (duplication de clé)
-                        $flash->flash('register', 'Un compte est déjà existant avec cet email', "error");
-                        // Ajoutez d'autres cas au besoin
-
+                    break;
                     default:
                         $flash->flash('register', 'Une erreur est survenue', "error");
                 }

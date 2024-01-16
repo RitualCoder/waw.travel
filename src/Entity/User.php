@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-class User
+use Plugo\Services\Security\Security;
+
+class User extends Security
 {
 
     private ?int $id;

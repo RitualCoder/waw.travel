@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-class Vehicle
+use Plugo\Services\Security\Security;
+
+class Vehicle extends Security
 {
     private ?int $id;
     private ?string $name;
