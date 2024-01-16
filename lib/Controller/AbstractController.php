@@ -2,7 +2,7 @@
 
 namespace Plugo\Controller;
 
-use Plugo\Services\SecurityXSS;
+use Plugo\Services\Security\Security;
 
 abstract class AbstractController
 {
@@ -10,8 +10,8 @@ abstract class AbstractController
 	protected function renderView(string $template, array $data = []): string
 	{
 		$templatePath = dirname(__DIR__, 2) . '/templates/' . $template;
-		$securityXSS = new SecurityXSS();
-		$securityXSS->dataEscape($data);
+        $security = new Security();
+        $data = $security->dataEscape($data);
 		return require_once dirname(__DIR__, 2) . '/templates/layout.php';
 	}
 
