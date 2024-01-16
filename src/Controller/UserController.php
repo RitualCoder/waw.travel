@@ -31,9 +31,13 @@ class UserController extends AbstractController
                 // Ajouter l'utilisateur et récupérer l'instruction PDOStatement
                 $statement = $userManager->add($user);
 
+                $userId = $userManager->findOneBy([
+                    'email' => $_POST['email'],
+                ]);
+
                 // Si l'ajout est réussi, procédez à la connexion de l'utilisateur
                 if ($statement instanceof \PDOStatement) {
-                    $authenticator->login($user->getUsername(), $user->getPassword(), $user->getEmail());
+                    $authenticator->login($userId->getId());
                     $flash->flash('register', 'Inscription réussie. Vous êtes maintenant connecté.', "error");
                     $this->redirectToRoute('/');
                 }
@@ -53,7 +57,7 @@ class UserController extends AbstractController
             }
         }
 
-        $this->renderView('auth/register.php', ['user' => $user]);
+        $this->renderView('auth/register.php', ['user' => $user, 'flash' => $flash]);
     }
     public function login(): void
     {
@@ -71,7 +75,7 @@ class UserController extends AbstractController
             ]);
 
             if (password_verify($_POST['password'], $user->getPassword())) {
-                $authenticator->login($user->getUsername(), $user->getPassword(), $user->getEmail(), $user->getCreated_at());
+                $authenticator->login($user->getId());
                 $flash->flash('login', 'Connexion réussie', "success");
                 $this->redirectToRoute('/');
             } else {
@@ -79,7 +83,7 @@ class UserController extends AbstractController
             }
         }
 
-        $this->renderView('auth/login.php');
+        $this->renderView('auth/login.php', ['flash' => $flash]);
     }
 
     public function logout(): void
@@ -87,5 +91,80 @@ class UserController extends AbstractController
         $authenticator = new Authenticator();
         $authenticator->logout();
         $this->redirectToRoute('connexion');
+    }
+
+    public function profil(): void
+    {
+        $authenticator = new Authenticator();
+        $flash = new Flash();
+
+        if (!$authenticator->isLoggedIn()) {
+            $this->redirectToRoute('connexion');
+        }
+
+        $userManager = new UserManager();
+        $user = $userManager->findOneBy([
+            'id' => $_SESSION['id'],
+        ]);
+
+        $userManager = new UserManager();
+
+        if (isset($_POST['username'])) {
+
+            $user->setUsername($_POST['username']);
+
+            $statement = $userManager->editUsername($user);
+
+            if ($statement instanceof \PDOStatement) {
+                $flash->flash('pseudo', 'Pseudo mis à jour', "success");
+                $this->redirectToRoute('profil');
+            } else {
+                $flash->flash('profil', 'Une erreur est survenue', "error");
+            }
+        }
+
+        if (isset($_POST['email'])) {
+            $user->setEmail($_POST['email']);
+
+            $statement = $userManager->editEmail($user);
+
+            if ($statement instanceof \PDOStatement) {
+                $flash->flash('email', 'Email mis à jour !', "success");
+                $this->redirectToRoute('profil');
+            } else {
+                $flash->flash('profil', 'Une erreur est survenue', "error");
+            }
+        }
+
+        if (isset($_POST['password'])) {
+            $user->setPassword($_POST['password']);
+
+            $statement = $userManager->editPassword($user);
+
+            if ($statement instanceof \PDOStatement) {
+                $flash->flash('password', 'Mot de passe mis à jour !', "success");
+                $this->redirectToRoute('profil');
+            } else {
+                $flash->flash('profil', 'Une erreur est survenue', "error");
+            }
+        }
+
+        $created_at = $user->getCreated_at();
+        $created_at = date('d/m/Y', strtotime($created_at));
+
+        $this->renderView(
+            'main/profil.php',
+            [
+                'seo' => [
+                    'title' => 'Mon profil',
+                ],
+                'user' => [
+                    'username' => $user->getUsername(),
+                    'email' => $user->getEmail(),
+                    'created_at' => $created_at,
+                ],
+                'flash' => $flash,
+            ],
+        );
     }
 }

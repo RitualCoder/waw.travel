@@ -6,12 +6,13 @@ use Plugo\Controller\AbstractController;
 use App\Manager\ImageManager;
 use Plugo\Services\Upload\ServiceImage;
 use App\Entity\Image;
+use Plugo\Services\Flash\Flash;
 
 class MainController extends AbstractController
 {
     public function home(): void
     {
-
+        $flash = new Flash();
         if (isset($_FILES['file'])) {
             $imageManager = new ImageManager();
             $image = new Image();
@@ -29,9 +30,8 @@ class MainController extends AbstractController
             } catch (\Throwable $th) {
                 var_dump($th->getMessage());
             }
-
             $this->redirectToRoute('/');
         }
-        $this->renderView('main/home.php');
+        $this->renderView('main/home.php', ['flash' => $flash]);
     }
 }

@@ -1,11 +1,3 @@
-<?php
-
-use Plugo\Services\Flash\Flash;
-
-$flash = new Flash();
-
-?>
-
 <div class="container">
     <h1>Inscription</h1>
 
@@ -19,6 +11,6 @@ $flash = new Flash();
         <button type="submit">S'inscrire</button>
     </form>
     <div>
-        <?php $flash->display_flash_message('register'); ?>
+        <?php $data["flash"]->display_flash_message('register'); ?>
     </div>
 </div>

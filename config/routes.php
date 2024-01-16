@@ -24,4 +24,10 @@ const ROUTES = [
         'method' => 'logout',
         'name' => 'app_logout'
     ],
+
+    '/profil' => [
+        'controller' => App\Controller\UserController::class,
+        'method' => 'profil',
+        'name' => 'profil'
+    ],
 ];
