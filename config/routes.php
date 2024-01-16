@@ -24,4 +24,9 @@ const ROUTES = [
         'method' => 'logout',
         'name' => 'app_logout'
     ],
+    'ajouter' => [
+        'controller' => App\Controller\RoadtripController::class,
+        'method' => 'add',
+        'name' => 'app_add'
+    ],
 ];
