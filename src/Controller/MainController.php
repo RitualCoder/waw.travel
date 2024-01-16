@@ -22,12 +22,12 @@ class MainController extends AbstractController
                 $filePath = $uploadImage->upload($_FILES["file"], $uploadDir);
 
                 // Ajout du chemin de l'image à l'objet Image
-                $image->setFilePath($filePath);
+                $image->setFilepath($filePath);
 
                 // Ajouter l'image à la base de données
                 $imageManager->add($image);
             } catch (\Throwable $th) {
-                var_dump($th->getMessage());
+                $th->getMessage();
             }
 
             $this->redirectToRoute('/');

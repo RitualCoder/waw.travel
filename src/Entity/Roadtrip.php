@@ -5,8 +5,9 @@ namespace App\Entity;
 use App\Manager\UserManager;
 use App\Manager\VehicleManager;
 use App\Manager\ImageManager;
+use Plugo\Services\Security\Security;
 
-class Roadtrip
+class Roadtrip extends Security
 {
     private ?int $id;
     private ?string $name;

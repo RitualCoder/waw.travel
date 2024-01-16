@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
+use Plugo\Services\Security\Security;
 
-
-class Step {
+class Step extends Security {
 
     private ?int $id;
     private ?string $name;
@@ -58,11 +58,11 @@ class Step {
         $this->date_arrival = $date_arrival;
     }
 
-    public function getRoadtrip(): ?int {
+    public function getRoadtrip_id(): ?int {
         return $this->roadtrip_id;
     }
 
-    public function setRoadtrip(int $roadtrip_id): void {
+    public function setRoadtrip_id(int $roadtrip_id): void {
         $this->roadtrip_id = $roadtrip_id;
     }
 }

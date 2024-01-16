@@ -25,7 +25,7 @@ class ImageManager extends AbstractManager {
 
     public function add(Image $image): \PDOStatement {
         return $this->create(Image::class, [
-            'filePath' => $image->getFilePath(),
+            'filepath' => $image->getFilepath(),
             'created_at' => date('Y-m-d H:i:s'),
         ]);
     }

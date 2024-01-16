@@ -2,10 +2,16 @@
 
 namespace Plugo\Controller;
 
-abstract class AbstractController {
+use Plugo\Services\Security\Security;
 
-	protected function renderView(string $template, array $data = []): string {
+abstract class AbstractController
+{
+
+	protected function renderView(string $template, array $data = []): string
+	{
 		$templatePath = dirname(__DIR__, 2) . '/templates/' . $template;
+        $security = new Security();
+        $data = $security->dataEscape($data);
 		return require_once dirname(__DIR__, 2) . '/templates/layout.php';
 	}
 

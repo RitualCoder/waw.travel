@@ -30,7 +30,7 @@ class StepManager extends AbstractManager {
             'coordinates' => $step->getCoordinates(),
             'date_departure' => $step->getDate_departure(),
             'date_arrival' => $step->getDate_arrival(),
-            'roadtrip_id' => $step->getRoadtrip(),
+            'roadtrip_id' => $step->getRoadtrip_id(),
         ]);
     }
 
@@ -41,7 +41,7 @@ class StepManager extends AbstractManager {
             'coordinates' => $step->getCoordinates(),
             'date_departure' => $step->getDate_departure(),
             'date_arrival' => $step->getDate_arrival(),
-            'roadtrip_id' => $step->getRoadtrip(),
+            'roadtrip_id' => $step->getRoadtrip_id(),
         ], $step->getId());
     }
 

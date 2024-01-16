@@ -2,16 +2,13 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Plugo\Services\Security\Security;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
- */
-class Image
+class Image extends Security
 {
-    private $id;
-    private $filePath;
-    private $created_at;
+    private ?int $id;
+    private ?string $filepath;
+    private ?string $created_at;
 
     // Getters and Setters
 
@@ -20,30 +17,20 @@ class Image
         return $this->id;
     }
 
-    public function getFilePath(): ?string
+    public function getFilepath(): ?string
     {
-        return $this->filePath;
+        return $this->filepath;
     }
 
-    public function setFilePath(string $filePath): self
+    public function setFilepath(string $filepath): self
     {
-        $this->filePath = $filePath;
+        $this->filepath = $filepath;
 
         return $this;
-    }
-
-    public function getPath(): ?string
-    {
-        return $this->filePath;
     }
 
     public function getCreated_at(): ?string
     {
         return $this->created_at;
-    }
-
-    public function generateUUID(): string
-    {
-        return uniqid();
     }
 }
