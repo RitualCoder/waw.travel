@@ -69,7 +69,7 @@ class RoadtripController extends AbstractController
             $step1->setCoordinates($_POST['first-step-coordonates']);
             $step1->setDate_departure($_POST['first-step-departure-date']);
             $step1->setDate_arrival($_POST['first-step-arrival-date']);
-            $step1->setRoadtrip($roadtripId[0]->getId());
+            $step1->setRoadtrip_id($roadtripId[0]->getId());
 
             $StepManager->add($step1);
 
@@ -78,7 +78,7 @@ class RoadtripController extends AbstractController
             $step2->setCoordinates($_POST['last-step-coordonates']);
             $step2->setDate_departure($_POST['last-step-departure-date']);
             $step2->setDate_arrival($_POST['last-step-arrival-date']);
-            $step2->setRoadtrip($roadtripId[0]->getId());
+            $step2->setRoadtrip_id($roadtripId[0]->getId());
 
             $StepManager->add($step2);
 
