@@ -1,3 +1,11 @@
+<?php
+
+use Plugo\Services\Flash\Flash;
+
+$flash = new Flash();
+
+?>
+
 <div class="container">
     <h1>Connexion</h1>
 
@@ -8,4 +16,7 @@
         <input name="password" id="password" type="password" placeholder="Mot de passe">
         <button type="submit">Se connecter</button>
     </form>
+    <div>
+        <?php $flash->display_flash_message('login'); ?>
+    </div>
 </div>
