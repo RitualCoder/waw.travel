@@ -1,0 +1,19 @@
+{
+  "name": "waw.travel",
+  "version": "1.0.0",
+  "description": "# Des infos pour dev avec ce framework... 😊",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i src/inputStyles.css -o public/outputStyles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
