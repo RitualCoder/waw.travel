@@ -4,38 +4,30 @@ namespace App\Controller;
 
 use Plugo\Controller\AbstractController;
 use App\Manager\ImageManager;
+use Plugo\Services\Upload\ServiceImage;
 use App\Entity\Image;
 
 class MainController extends AbstractController
 {
     public function home(): void
     {
-        $imageManager = new ImageManager();
-        $image = new Image();
-
-        // var_dump($_POST['file']);
-        // var_dump($_FILES['file']);
 
         if (isset($_FILES['file'])) {
-            try {
-                $id = uniqid();
-                $filePath = "public/uploads/" . $id;
+            $imageManager = new ImageManager();
+            $image = new Image();
+            $uploadImage = new ServiceImage();
 
-                var_dump($filePath);
+            try {
+                $uploadDir = dirname(__DIR__, 2) . "/public/uploads/images/";
+                $filePath = $uploadImage->upload($_FILES["file"], $uploadDir);
+
+                // Ajout du chemin de l'image à l'objet Image
                 $image->setFilePath($filePath);
 
-                if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
-                    try {
-                        $imageManager->add($image);
-                    } catch (\Throwable $th) {
-                        var_dump($th . 'error');
-                    }
-                } else {
-                    // Gérer l'erreur liée au déplacement du fichier
-                    echo 'Erreur lors du déplacement du fichier téléchargé.';
-                }
+                // Ajouter l'image à la base de données
+                $imageManager->add($image);
             } catch (\Throwable $th) {
-                var_dump($th . 'error');
+                var_dump($th->getMessage());
             }
 
             $this->redirectToRoute('/');
