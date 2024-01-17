@@ -5,8 +5,12 @@
     </section>
 
     <section>
-        <?php foreach ($data['roadtrips'] as $roadtrip) : ?>
-            <a>
+        <?php
+
+use App\Entity\Roadtrip;
+
+ foreach ($data['roadtrips'] as $roadtrip) : ?>
+            <a href=<?= '/?path=/roadtrip/' . $roadtrip->getId() ?>>
                 <img src="" alt="">
                 <h2><?= $roadtrip->getName() ?></h2>
                 <div>
@@ -16,7 +20,7 @@
                     </span>
                     <span>
                         <img src="" alt="icon">
-                        <p><?= $roadtrip->getStepsNumber() ?></p>
+                        <p><?= $roadtrip->getStepsNumber() ?> étapes</p>
                     </span>
                 </div>
                 <span>

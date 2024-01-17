@@ -11,7 +11,6 @@
         <input type="text" name="name" id="name" value=<?= $data['roadtrip']->getName() ?> required>
 
         <h2>Type de véhicule</h2>
-        <!-- remplie par défault -->
 
         <select name="vehicle" id="vehicle" required>
             <?php foreach ($data['vehicles'] as $vehicle) :
@@ -61,7 +60,7 @@
     <h2>Ajouter une étape</h2>
     <form action="" method="post">
         <input type="hidden" name="add-step">
-                
+
         <input type="text" name="step-name" id="step-name" placeholder="Nom de l’étape" required>
         <input type="number" name="step-number" id="step-number" placeholder="Numéro de l’étape" required>
         <input type="text" name="step-coordonates" id="step-coordonates" placeholder="Coordonnée GPS" required>
