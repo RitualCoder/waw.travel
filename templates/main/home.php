@@ -1,6 +1,6 @@
 <div class="container">
 
-    <h1>Home</h1>
+    <h1 class="text-2xl">Home</h1>
     <a href="?path=/profil">Mon profil</a>
     <form action="?path=/" method="post" enctype="multipart/form-data">
         <label for="file">Fichier</label>
