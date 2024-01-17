@@ -1,14 +1,22 @@
 <div class="container">
+  <section class="section-home-header">
+    <h1>WaW.travel</h1>
+    <p>Découvrez des itinéraires captivants, des récits inspirants et des conseils pour des voyages inoubliables. Rejoignez une communauté passionnée de voyageurs. Prêt pour l'évasion ?</p>
+  </section>
+  <section class="last-add-travel">
+    <h2>Nos derniers ajouts</h2>
+    <article>
+      <img src="/public/uploads/images/placeholder.png" alt="nom" >
+      <div class="travel-card">
+        <h3>Nom</h3>
+        <div>
+          <span><img src="/icons/compass.svg" alt="compas"> valeur km</span>
+          <span><img src="/public/icons/crossroads.svg" alt="panneau de direction"> valeur étapes</span>
+        </div>
+        <span><img src="/public/icons/location.svg" alt="localisation"> De : valeur</span>
+        <span><img src="/public/icons/location.svg" alt="localisation"> À : valeur</span>
+      </div>
 
-    <h1>Home</h1>
-    <a href="?path=/profil">Mon profil</a>
-    <form action="?path=/" method="post" enctype="multipart/form-data">
-        <label for="file">Fichier</label>
-        <input type="file" name="file">
-        <button type="submit">Enregistrer</button>
-    </form>
-
-    <div>
-        <?php $data['flash']->display_all_flash_messages(); ?>
-    </div>
+    </article>
+  </section>
 </div>
