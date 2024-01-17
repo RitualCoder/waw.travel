@@ -28,3 +28,17 @@
 - le layout qui est la base du rendu client
 - les partials (ex: header, footer, sidebar)
 - les pages (généralement présente dans un dossier par controller)
+
+## tailwind css
+- Installer tailwind
+`npm install`
+- Lancer tailwind
+`npm run watch`
+- Attention lors de la création de l'output il faut modifier le lien présent dans le layout pour qu'il soit de cette manière
+`<link href="outputStyles.css" rel="stylesheet">`
+- Build tailwind pour la mise en production
+`npm run build`
+
+## Installer la base de donnée
+- Créer le fichier **database.php** dans le dossier **config** à partir du fichier **database.exemple.php**
+- Ajouter les informations nécessaires à la connexion à la base de données

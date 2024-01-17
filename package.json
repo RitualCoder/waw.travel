@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -i src/inputStyles.css -o public/outputStyles.css --watch"
+    "watch": "tailwindcss -i src/inputStyles.css -o public/outputStyles.css --watch",
+    "build": "tailwindcss -i src/inputStyles.css -o public/outputStyles.css"
   },
   "keywords": [],
   "author": "",
