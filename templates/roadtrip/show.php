@@ -15,7 +15,7 @@ $username = $user->getUsername();
             <h1><?= $data['roadtrip']->getName() ?></h1>
             <div>
                 <span>
-                    <img src=<?= $vehicleIcon . '.svg' ?> alt="<?= $vehicleName . ' icon' ?>">
+                    <img src=<?='/images/icons/' . $vehicleIcon . '.svg' ?> alt="<?= $vehicleName . ' icon' ?>">
                     <p><?= $vehicleName ?></p>
                 </span>
                 <span>

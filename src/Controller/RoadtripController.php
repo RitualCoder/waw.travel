@@ -12,7 +12,6 @@ use App\Manager\ImageManager;
 use Plugo\Services\Upload\ServiceImage;
 use App\Entity\Image;
 use App\Manager\StepManager;
-use App\Manager\UserManager;
 use Plugo\Services\Flash\Flash;
 
 class RoadtripController extends AbstractController
@@ -29,9 +28,6 @@ class RoadtripController extends AbstractController
 
         $RoadtripManager = new RoadtripManager();
         $roadtrips = $RoadtripManager->findBy(['user_id' => $_SESSION['id']], ['id' => 'DESC']);
-
-        $vehicleManager = new VehicleManager();
-        $vehicle = $vehicleManager->findAll();
 
         $this->renderView('roadtrip/list.php', [
             'roadtrips' => $roadtrips,

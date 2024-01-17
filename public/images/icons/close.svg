@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: none;
-      }
-    </style>
-  </defs>
-  <polygon points="17.4141 16 26 7.4141 24.5859 6 16 14.5859 7.4143 6 6 7.4141 14.5859 16 6 24.5859 7.4143 26 16 17.4141 24.5859 26 26 24.5859 17.4141 16"/>
-  <rect id="_Transparent_Rectangle_" data-name="&amp;lt;Transparent Rectangle&amp;gt;" class="cls-1" width="32" height="32"/>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_3_55)">
+<path d="M17.4141 16L26 7.4141L24.5859 6L16 14.5859L7.4143 6L6 7.4141L14.5859 16L6 24.5859L7.4143 26L16 17.4141L24.5859 26L26 24.5859L17.4141 16Z" fill="#040512"/>
+</g>
+<defs>
+<clipPath id="clip0_3_55">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
 </svg>

@@ -13,7 +13,7 @@
     <title>waw.travel</title>
 </head>
 
-<body class="text-black bg-white z-[0] min-h-screen flex flex-col">
+<body class="relative text-black bg-white z-[0] min-h-screen flex flex-col pb-36 lg:pb-40">
     <?php require __DIR__ . '/_header.php'; ?>
 
     <main>
