@@ -15,7 +15,7 @@
         </select>
 
         <h2>Image du road trip</h2>
-        <input type="file" name="file" id="image" required>
+        <input type="file" name="file" id="image" accept="image/png, image/jpeg" required>
 
         <h2>Départ</h2>
         <input type="text" name="first-step-name" id="first-step-name" placeholder="Nom de l’étape" required>

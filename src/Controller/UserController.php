@@ -96,7 +96,8 @@ class UserController extends AbstractController
         $flash = new Flash();
 
         if (!$authenticator->isLoggedIn()) {
-            $this->redirectToRoute('connexion');
+            $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error");
+            $this->redirectToRoute('/connexion', ['flash' => $flash]);    
         }
 
         $userManager = new UserManager();
