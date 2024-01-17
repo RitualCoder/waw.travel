@@ -81,7 +81,7 @@ class Roadtrip extends Security
     public function getSteps(): ?array
     {
         $manager = new StepManager();
-        return $manager->findBy(['roadtrip_id' => $this->id]);
+        return $manager->findBy(['roadtrip_id' => $this->id], ['number' => 'ASC']);
     }
 
     public function getStepsNumber(): ?int
