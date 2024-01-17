@@ -26,18 +26,18 @@ class RoadtripManager extends AbstractManager {
     public function add(Roadtrip $roadtrip): \PDOStatement {
         return $this->create(Roadtrip::class, [
             'name' => $roadtrip->getName(),
-            'user_id' => $roadtrip->getUser(),
-            'vehicle_id' => $roadtrip->getVehicle(),
-            'image_id' => $roadtrip->getImage(),
+            'user_id' => $roadtrip->getUser_id(),
+            'vehicle_id' => $roadtrip->getVehicle_id(),
+            'image_id' => $roadtrip->getImage_id(),
         ]);
     }
 
     public function edit(Roadtrip $roadtrip): \PDOStatement {
         return $this->update(Roadtrip::class, [
             'name' => $roadtrip->getName(),
-            'user_id' => $roadtrip->getUser(),
-            'vehicle_id' => $roadtrip->getVehicle(),
-            'image_id' => $roadtrip->getImage(),
+            'user_id' => $roadtrip->getUser_id(),
+            'vehicle_id' => $roadtrip->getVehicle_id(),
+            'image_id' => $roadtrip->getImage_id(),
         ], $roadtrip->getId());
     }
 

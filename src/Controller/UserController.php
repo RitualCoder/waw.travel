@@ -54,7 +54,7 @@ class UserController extends AbstractController
             }
         }
 
-        $this->renderView('auth/register.php', ['user' => $user, 'flash' => $flash]);
+        $this->renderView('auth/register.php', ['flash' => $flash]);
     }
     public function login(): void
     {

@@ -35,6 +35,10 @@ class Roadtrip extends Security
         $manager = new UserManager();
         return $manager->find($this->user_id);
     }
+    public function getUser_id(): ?int
+    {
+        return $this->user_id;
+    }
 
     public function setUser(int $user_id): void
     {
@@ -47,6 +51,11 @@ class Roadtrip extends Security
         return $manager->find($this->vehicle_id);
     }
 
+    public function getVehicle_id(): ?int
+    {
+        return $this->vehicle_id;
+    }
+
     public function setVehicle(int $vehicle_id): void
     {
         $this->vehicle_id = $vehicle_id;
@@ -56,6 +65,11 @@ class Roadtrip extends Security
     {
         $manager = new ImageManager();
         return $manager->find($this->image_id);
+    }
+
+    public function getImage_id(): ?int
+    {
+        return $this->image_id;
     }
 
     public function setImage(int $image_id): void

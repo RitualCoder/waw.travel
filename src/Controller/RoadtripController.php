@@ -21,7 +21,7 @@ class RoadtripController extends AbstractController
         $authenticator = new Authenticator();
 
         if (!$authenticator->isLoggedIn()) {
-            $this->redirectToRoute('/');
+            $this->redirectToRoute('/connexion');
         }
 
         $VehicleManager = new VehicleManager();
@@ -35,35 +35,47 @@ class RoadtripController extends AbstractController
         $step2 = new Step();
 
         if (isset($_POST['add-roadtrip'])) {
+
             $roadtrip->setName($_POST['name']);
             $roadtrip->setVehicle($_POST['vehicle']);
 
-            if (isset($_FILES['image'])) {
-                $imageManager = new ImageManager();
-                $image = new Image();
+            $ImageManager = new ImageManager();
+            $image = new Image();
+            $filePath = null;
+
+            // Ajout de l'image
+            // var_dump($_FILES['file']);
+            if (isset($_FILES['file'])) {
                 $uploadImage = new ServiceImage();
     
                 try {
                     $uploadDir = dirname(__DIR__, 2) . "/public/uploads/images/";
-                    $filePath = $uploadImage->upload($_FILES["image"], $uploadDir);
-    
+                    $filePath = $uploadImage->upload($_FILES["file"], $uploadDir);
                     // Ajout du chemin de l'image à l'objet Image
-                    $image->setFilePath($filePath);
-    
+                    $image->setFilepath($filePath);
                     // Ajouter l'image à la base de données
-                    $imageManager->add($image);
+                    $ImageManager->add($image);
                 } catch (\Throwable $th) {
                     $th->getMessage();
                 }
-                $roadtrip->setImage($image->getId());
+            }
+            var_dump($filePath);
+            // récupérer l'id de l'image
+            $imageUpload = $ImageManager->findBy(['filepath' => $filePath], ['id' => 'DESC'], 1);
+            var_dump($imageUpload[0]->getId());
+            if(isset($filePath)){
+                $roadtrip->setImage($imageUpload[0]->getId());
             }
 
+            var_dump($_SESSION['id']);
             $roadtrip->setUser($_SESSION['id']);
 
             $RoadtripManager->add($roadtrip);
 
+            // récupérer l'id du roadtrip
             $roadtripId = $RoadtripManager->findBy(['user_id' => $_SESSION['id']], ['id' => 'DESC'], 1 );
 
+            // Ajout des étapes
             $step1->setName($_POST['first-step-name']);
             $step1->setNumber($_POST['first-step-number']);
             $step1->setCoordinates($_POST['first-step-coordonates']);
