@@ -6,6 +6,7 @@ use App\Manager\UserManager;
 use App\Manager\VehicleManager;
 use App\Manager\ImageManager;
 use Plugo\Services\Security\Security;
+use App\Manager\StepManager;
 
 class Roadtrip extends Security
 {
@@ -35,6 +36,10 @@ class Roadtrip extends Security
         $manager = new UserManager();
         return $manager->find($this->user_id);
     }
+    public function getUser_id(): ?int
+    {
+        return $this->user_id;
+    }
 
     public function setUser(int $user_id): void
     {
@@ -45,6 +50,11 @@ class Roadtrip extends Security
     {
         $manager = new VehicleManager();
         return $manager->find($this->vehicle_id);
+    }
+
+    public function getVehicle_id(): ?int
+    {
+        return $this->vehicle_id;
     }
 
     public function setVehicle(int $vehicle_id): void
@@ -58,8 +68,25 @@ class Roadtrip extends Security
         return $manager->find($this->image_id);
     }
 
+    public function getImage_id(): ?int
+    {
+        return $this->image_id;
+    }
+
     public function setImage(int $image_id): void
     {
         $this->image_id = $image_id;
+    }
+
+    public function getSteps(): ?array
+    {
+        $manager = new StepManager();
+        return $manager->findBy(['roadtrip_id' => $this->id], ['number' => 'ASC']);
+    }
+
+    public function getStepsNumber(): ?int
+    {
+        $manager = new StepManager();
+        return count($manager->findBy(['roadtrip_id' => $this->id]));
     }
 }

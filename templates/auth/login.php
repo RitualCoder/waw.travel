@@ -1,4 +1,7 @@
 <div class="container">
+    <div>
+        <p><? $data['flash']->display_flash_message('connexion'); ?></p>
+    </div>
     <h1>Connexion</h1>
 
     <form method="post">

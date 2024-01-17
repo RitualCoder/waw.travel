@@ -1,7 +1,7 @@
 <h1> <?= $data['seo']['title'] ?> </h1>
 <p> <?= $data['user']['username'] ?> </p>
 <p> <?= $data['user']['email'] ?> </p>
-<p>Membre de depuis le : <?= $data['user']['created_at'] ?> </p>
+<p>Membre depuis le : <?= $data['user']['created_at'] ?> </p>
 
 <h2>Modifier mon pseudo</h2>
 
