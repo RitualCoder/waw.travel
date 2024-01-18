@@ -48,7 +48,7 @@
             <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Modifier</button>
         </form>
 
-        <div class="w-full md:w-4/5 mx-auto flex flex-col items-center border-red border rounded-main mt-6 gap-4 py-4 px-8 xl:w-3/5">
+        <div class="w-full md:w-4/5 mx-auto flex flex-col items-center border-red border-2 rounded-main mt-6 gap-4 py-4 px-8 xl:w-3/5">
             <h2 class="font-medium text-center text-lg font-second lg:text-xl text-red">Supprimer mon compte</h2>
             <p class="text-red font-medium text-center">Attention, cette action est irréversible.</p>
             <form method="post" class="flex flex-col items-center gap-4">
