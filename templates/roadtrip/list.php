@@ -1,4 +1,4 @@
-<div class="container">
+<div class="w-full">
     <section class="bg-roadtrips bg-center bg-no-repeat bg-cover h-60 lg:h-96">
         <div class="flex flex-col text-white justify-center items-center w-full h-full bg-filter gap-4 px-4 lg:gap-8 py-2">
             <h1 class="font-second text-xl lg:text-4xl">Mon carnet de voyage</h1>
@@ -6,28 +6,28 @@
         </div>
     </section>
 
-    <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-6 lg:px-20 lg:pt-16">
+    <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-6 lg:px-12 xl:px-20 lg:pt-16">
         <?php foreach ($data['roadtrips'] as $roadtrip) : ?>
             <a href=<?= '/?path=/roadtrip/' . $roadtrip->getId() ?> class="shadow-main rounded-main py-4 px-4">
                 <img src="/images/home.jpg" alt="" class="rounded-main">
                 <div class="py-2 flex flex-col gap-4">
                     <h2 class="text-xl font-second font-medium text-blue"><?= $roadtrip->getName() ?></h2>
-                    <div class="flex items-center gap-4 lg:gap-12">
+                    <div class="flex items-center gap-4 lg:gap-6 xl:gap-12">
                         <span class="flex items-center gap-2">
-                            <img class="h-7 lg:h-9" src="/images/icons/compass.svg" alt="compass icon">
+                            <img class="h-7 xl:h-9" src="/images/icons/compass.svg" alt="compass icon">
                             <p class="font-medium text-sm md:text-base">1 256 km</p>
                         </span>
                         <span class="flex items-center gap-2">
-                            <img class="h-7 lg:h-9" src="/images/icons/crossroads.svg" alt="steps icon">
+                            <img class="h-7 xl:h-9" src="/images/icons/crossroads.svg" alt="steps icon">
                             <p class="font-medium text-sm md:text-base"><?= $roadtrip->getStepsNumber() ?> étapes</p>
                         </span>
                     </div>
                     <span class="flex items-center gap-2">
-                        <img class="h-7 lg:h-9" src="/images/icons/location.svg" alt="location icon">
+                        <img class="h-7 xl:h-9" src="/images/icons/location.svg" alt="location icon">
                         <p class="font-medium text-sm md:text-base">De : <?= $roadtrip->getSteps()[0]->getName() ?></p>
                     </span>
                     <span class="flex items-center gap-2">
-                        <img class="h-7 lg:h-9" src="/images/icons/location.svg" alt="location icon">
+                        <img class="h-7 xl:h-9" src="/images/icons/location.svg" alt="location icon">
                         <p class="font-medium text-sm md:text-base">À : <?= $roadtrip->getSteps()[$roadtrip->getStepsNumber() - 1]->getName() ?></p>
                     </span>
                 </div>
