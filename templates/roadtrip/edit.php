@@ -1,4 +1,4 @@
-<div class="container">
+<div class="w-full">
 
     <div>
         <p><?= $data['flash']->display_flash_message('add-step'); ?></p>

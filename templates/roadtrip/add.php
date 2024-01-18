@@ -1,4 +1,4 @@
-<div class="container">
+<div class="w-full">
 
     <h1>Ajouter un roadtrip</h1>
 
