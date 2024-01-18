@@ -13,10 +13,10 @@
     <title>waw.travel</title>
 </head>
 
-<body class="relative text-black bg-white z-[0] min-h-screen flex flex-col pb-36 lg:pb-40">
+<body class="relative text-black bg-white z-[0] min-h-screen flex flex-col pb-36 lg:pb-40 h-fit">
     <?php require __DIR__ . '/_header.php'; ?>
 
-    <main>
+    <main class="h-fit">
         <?php require $templatePath; ?>
     </main>
 

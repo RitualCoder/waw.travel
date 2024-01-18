@@ -120,7 +120,7 @@ class RoadtripController extends AbstractController
 
             $StepManager->add($step2);
 
-            $this->redirectToRoute('/');
+            $this->redirectToRoute('/roadtrips');
         }
         -$this->renderView('roadtrip/add.php', [
             'vehicles' => $vehicles,
@@ -147,7 +147,6 @@ class RoadtripController extends AbstractController
 
 
         $StepManager = new StepManager();
-        $steps = $StepManager->findBy(['roadtrip_id' => $id], ['number' => 'ASC']);
 
         // edition roadtrip
         if (isset($_POST['edit-roadtrip'])) {
@@ -200,7 +199,7 @@ class RoadtripController extends AbstractController
 
             $flash->flash('add-step', 'L\'étape a bien été ajoutée', "success");
 
-            $this->redirectToRoute('/roadtrip/' . $id . '/modifier');
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer');
         }
 
         // suppression étape
@@ -212,7 +211,7 @@ class RoadtripController extends AbstractController
 
             $flash->flash('delete-step', 'L\'étape a bien été supprimée', "success");
 
-            $this->redirectToRoute('/roadtrip/' . $id . '/modifier');
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer');
         }
 
         // suppression roadtrip
@@ -229,8 +228,6 @@ class RoadtripController extends AbstractController
         $this->renderView('roadtrip/edit.php', [
             'roadtrip' => $roadtrip,
             'vehicles' => $vehicles,
-            'image' => $image,
-            'steps' => $steps,
             'flash' => $flash,
         ]);
     }

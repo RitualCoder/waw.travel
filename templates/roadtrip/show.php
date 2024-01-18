@@ -44,13 +44,13 @@ $username = $user->getUsername();
     <section class="py-4 flex justify-center">
         <table class="w-4/5 mx-auto">
             <thead class="hidden md:flex">
-                <tr class="font-second md:grid md:grid-cols-[5%,5%,20%,30%,20%,20%] w-full px-4 py-2 lg:text-base lg:py-4">
-                    <th> </th>
-                    <th>N°</th>
-                    <th>Nom de l’étape</th>
-                    <th>Coordonnées</th>
-                    <th>Date d’arrivée</th>
-                    <th>Date de départ</th>
+                <tr class="font-second md:text-sm md:grid md:grid-cols-[5%,5%,20%,30%,20%,20%] w-full px-4 py-2 lg:text-base lg:py-4">
+                    <th class="my-auto"> </th>
+                    <th class="my-auto">N°</th>
+                    <th class="my-auto">Nom de l’étape</th>
+                    <th class="my-auto">Coordonnées</th>
+                    <th class="my-auto">Date d’arrivée</th>
+                    <th class="my-auto">Date de départ</th>
                 </tr>
             </thead>
             <tbody class="gap-8 flex flex-col">

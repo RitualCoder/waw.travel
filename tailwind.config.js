@@ -11,6 +11,7 @@ module.exports = {
       'white': '#FBFCFF',
       'black': '#040512',
       'filter': '#04051266',
+      'red': '#F11C1C'
     },
     fontFamily: {
       'main': ['Montserrat', 'sans-serif'],
@@ -20,9 +21,10 @@ module.exports = {
     boxShadow: {
       'main': '0px 0px 15px #00000040',
       'second': '0px 20px 15px #00000040',
+      'null': '0 0 0 #0000'
     },
     borderRadius: {
-      'main': '8px',
+      'main': '10px',
     },
     fontSize: {
       xxs: '.5rem',
@@ -47,5 +49,7 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };
