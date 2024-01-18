@@ -30,6 +30,7 @@ class RoadtripController extends AbstractController
 
         $this->renderView('roadtrip/list.php', [
             'roadtrips' => $roadtrips,
+            'flash' => $flash,
         ]);
     }
     public function show($id): void
@@ -119,7 +120,7 @@ class RoadtripController extends AbstractController
 
             $StepManager->add($step2);
 
-            $this->redirectToRoute('/roadtrips');
+            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('add-roadtrip', 'Le roadtrip a bien été ajouté', "success")]);
         }
         -$this->renderView('roadtrip/add.php', [
             'vehicles' => $vehicles,
@@ -180,7 +181,7 @@ class RoadtripController extends AbstractController
 
             $RoadtripManager->edit($roadtrip);
 
-            $flash->flash('edit-roadtrip', 'Le roadtrip a bien été modifié', "success");
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer/#roadtrip', ['flash' => $flash->flash('edit-roadtrip', 'Le roadtrip a bien été modifié', "success")]);
         }
 
         // ajout étape
@@ -196,9 +197,7 @@ class RoadtripController extends AbstractController
 
             $StepManager->add($step);
 
-            $flash->flash('add-step', 'L\'étape a bien été ajoutée', "success");
-
-            $this->redirectToRoute('/roadtrip/' . $id . '/editer');
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('add-step', 'L\'étape a bien été ajoutée', "success")]);
         }
 
         // suppression étape
@@ -208,9 +207,7 @@ class RoadtripController extends AbstractController
 
             $StepManager->delete($stepDelete);
 
-            $flash->flash('delete-step', 'L\'étape a bien été supprimée', "success");
-
-            $this->redirectToRoute('/roadtrip/' . $id . '/editer');
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('delete-step', 'L\'étape a bien été supprimée', "success")]);
         }
 
         // suppression roadtrip
@@ -219,9 +216,7 @@ class RoadtripController extends AbstractController
 
             $RoadtripManager->delete($roadtripDelete);
 
-            $flash->flash('delete-roadtrip', 'Le roadtrip a bien été supprimé', "success");
-
-            $this->redirectToRoute('/roadtrips');
+            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('delete-roadtrip', 'Le roadtrip a bien été supprimé', "success")]);
         }
 
         $this->renderView('roadtrip/edit.php', [

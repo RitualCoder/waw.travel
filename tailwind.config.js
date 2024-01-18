@@ -11,7 +11,9 @@ module.exports = {
       'white': '#FBFCFF',
       'black': '#040512',
       'filter': '#04051266',
-      'red': '#F11C1C'
+      'red': '#F11C1C',
+      'green': '#16C25B',
+      'yellow': '#E5DD27',
     },
     fontFamily: {
       'main': ['Montserrat', 'sans-serif'],

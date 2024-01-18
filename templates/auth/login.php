@@ -1,7 +1,7 @@
 <div class="w-full relative">
     <?php if (isset($_SESSION['FLASH_MESSAGES']['connexion'])) : ?>
-        <div class="absolute shadow-main rounded-main top-2 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[80] text-red">
-            <p><?php $data['flash']->display_flash_message('connexion'); ?></p>
+        <div class="absolute shadow-main rounded-main top-2 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[80]">
+            <?php $data['flash']->display_flash_message('connexion'); ?>
         </div>
     <?php endif; ?>
 
@@ -10,9 +10,7 @@
             <div class="bg-white shadow-main rounded-main py-2 px-8 items-center w-4/5 flex flex-col gap-4 xl:gap-8 md:justify-between mx-auto">
                 <h1 class="text-xl text-blue font-medium font-second xl:text-3xl">Connexion</h1>
                 <?php if (isset($_SESSION['FLASH_MESSAGES']['login'])) : ?>
-                    <div class="text-red">
-                        <p><?php $data['flash']->display_flash_message('login'); ?></p>
-                    </div>
+                    <?php $data['flash']->display_flash_message('login'); ?>
                 <?php endif; ?>
                 <form method="post" class="flex flex-col gap-4 xl:gap-8">
                     <input name="email" id="email" type="email" placeholder="Email" class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-base lg:px-4 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0" required>

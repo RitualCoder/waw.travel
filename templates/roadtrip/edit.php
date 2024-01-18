@@ -1,9 +1,21 @@
-<div class="w-full flex flex-col pt-8 items-center">
+<div class="w-full flex flex-col pt-8 items-center relative">
+    <?php if (isset($_SESSION['FLASH_MESSAGES']['edit-roadtrip'])) : ?>
+        <div class="absolute shadow-main rounded-main top-2 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[80]">
+            <?= $data['flash']->display_flash_message('edit-roadtrip'); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['FLASH_MESSAGES']['add-step'])) : ?>
+        <div class="absolute shadow-main rounded-main top-2 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[80]">
+            <?= $data['flash']->display_flash_message('add-step'); ?>
+        </div>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['FLASH_MESSAGES']['delete-step'])) : ?>
+        <div class="absolute shadow-main rounded-main top-2 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[80]">
+            <?= $data['flash']->display_flash_message('delete-step'); ?>
+        </div>
+    <?php endif; ?>
 
-    <div>
-        <p><?= $data['flash']->display_flash_message('add-step'); ?></p>
-    </div>
-    <h1 class="text-xl text-orange font-medium font-second lg:text-4xl">Éditer un road trip</h1>
+    <h1 id="roadtrip" class="text-xl text-orange font-medium font-second lg:text-4xl">Éditer un road trip</h1>
 
     <form method="post" enctype="multipart/form-data" class="flex flex-col gap-4 w-4/5 mx-auto mt-6 md:w-3/5">
         <input type="hidden" name="edit-roadtrip">
@@ -27,7 +39,7 @@
 
         <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Modifier</button>
     </form>
-    <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl py-4 mt-2">Étapes</h2>
+    <h2 id="step" class="font-medium text-center mb-2 text-lg font-second lg:text-xl py-4 mt-2">Étapes</h2>
 
     <table class="w-4/5 mx-auto md:w-11/12 lg:w-4/5">
         <thead class="hidden md:flex">
