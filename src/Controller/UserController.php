@@ -38,8 +38,7 @@ class UserController extends AbstractController
                 // Si l'ajout est réussi, procédez à la connexion de l'utilisateur
                 if ($statement instanceof \PDOStatement) {
                     $authenticator->login($userId->getId());
-                    $flash->flash('register', 'Inscription réussie. Vous êtes maintenant connecté.', "error");
-                    $this->redirectToRoute('/');
+                    $this->redirectToRoute('/', ['flash' => $flash->flash('register', 'Inscription réussie. Vous êtes maintenant connecté.', "success")]);
                 }
             } catch (\Throwable $th) {
                 // Gestion des erreurs
@@ -47,7 +46,7 @@ class UserController extends AbstractController
                     case 'HY000':
                     case '23000': // Code pour violation d'intégrité (duplication de clé)
                         $flash->flash('register', 'Un compte est déjà existant avec cet email', "error");
-                    break;
+                        break;
                     default:
                         $flash->flash('register', 'Une erreur est survenue', "error");
                 }
@@ -86,8 +85,9 @@ class UserController extends AbstractController
     public function logout(): void
     {
         $authenticator = new Authenticator();
+        $flash = new Flash();
         $authenticator->logout();
-        $this->redirectToRoute('connexion');
+        $this->redirectToRoute('/', ['flash' => $flash->flash('logout', 'Vous êtes maintenant déconnecté', "success")]);
     }
 
     public function profil(): void
@@ -96,8 +96,7 @@ class UserController extends AbstractController
         $flash = new Flash();
 
         if (!$authenticator->isLoggedIn()) {
-            $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error");
-            $this->redirectToRoute('/connexion', ['flash' => $flash]);    
+            $this->redirectToRoute('/connexion', ['flash' => $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error")]);
         }
 
         $userManager = new UserManager();

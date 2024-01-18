@@ -22,8 +22,7 @@ class RoadtripController extends AbstractController
         $flash = new Flash();
 
         if (!$authenticator->isLoggedIn()) {
-            $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error");
-            $this->redirectToRoute('/connexion', ['flash' => $flash]);            
+            $this->redirectToRoute('/connexion', ['flash' => $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error")]);
         }
 
         $RoadtripManager = new RoadtripManager();
@@ -51,7 +50,7 @@ class RoadtripController extends AbstractController
 
         if (!$authenticator->isLoggedIn()) {
             $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error");
-            $this->redirectToRoute('/connexion', ['flash' => $flash]);    
+            $this->redirectToRoute('/connexion', ['flash' => $flash]);
         }
 
         $VehicleManager = new VehicleManager();
@@ -133,7 +132,7 @@ class RoadtripController extends AbstractController
 
         if (!$authenticator->isLoggedIn()) {
             $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error");
-            $this->redirectToRoute('/connexion', ['flash' => $flash]);            
+            $this->redirectToRoute('/connexion', ['flash' => $flash]);
         }
 
         $RoadtripManager = new RoadtripManager();

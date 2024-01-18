@@ -43,6 +43,8 @@ module.exports = {
       backgroundImage: {
         'home': "url('/images/home.jpg')",
         'roadtrips': "url('/images/roadtrips.jpg')",
+        'login': "url('/images/login.jpg')",
+        'register': "url('/images/register.jpg')",
       },
     },
   },
