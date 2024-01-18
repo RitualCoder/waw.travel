@@ -15,7 +15,7 @@
         </select>
 
         <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl">Image du road trip</h2>
-        <input type="file" name="file" id="image" accept="image/png, image/jpeg" required class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black file:bg-blue file:text-white file:rounded-main file:border-blue file:border file:px-2 focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0">
+        <input type="file" name="file" id="image" accept="image/png, image/jpeg" required class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black file:bg-blue file:text-white file:rounded-main file:border-blue file:border file:px-2 focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0 file:mr-4">
 
         <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl">Départ</h2>
         <input type="text" name="first-step-name" id="first-step-name" placeholder="Nom de l’étape" required class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0">

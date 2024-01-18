@@ -132,12 +132,15 @@ class RoadtripController extends AbstractController
         $flash = new Flash();
 
         if (!$authenticator->isLoggedIn()) {
-            $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error");
-            $this->redirectToRoute('/connexion', ['flash' => $flash]);
+            $this->redirectToRoute('/connexion', ['flash' => $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error")]);
         }
 
         $RoadtripManager = new RoadtripManager();
         $roadtrip = $RoadtripManager->find($id);
+
+        if ($roadtrip->getUser_id() != $_SESSION['id']) {
+            $this->redirectToRoute('/connexion', ['flash' => $flash->flash('connexion', 'Vous n\'avez pas accès à cette page', "error")]);
+        }
 
         $VehicleManager = new VehicleManager();
         $vehicles = $VehicleManager->findAll();

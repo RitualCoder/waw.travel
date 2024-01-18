@@ -2,7 +2,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  content: ["./src/**/*.{html,js,php}", "./templates/**/*.{html,js,php}"],
+  content: ["./src/**/*.{html,js,php}", "./templates/**/*.{html,js,php}", "./lib/**/*.{html,js,php}"],
   theme: {
     colors: {
       'current': '#040512',
@@ -47,6 +47,7 @@ module.exports = {
         'roadtrips': "url('/images/roadtrips.jpg')",
         'login': "url('/images/login.jpg')",
         'register': "url('/images/register.jpg')",
+        'profil': "url('/images/profil.jpg')",
       },
     },
   },

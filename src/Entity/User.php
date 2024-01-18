@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Plugo\Services\Security\Security;
+use App\Manager\RoadtripManager;
 
 class User extends Security
 {
@@ -51,5 +52,17 @@ class User extends Security
     public function getCreated_at(): ?string
     {
         return $this->created_at;
+    }
+    
+    public function setCreated_at(string $created_at): void
+    {
+        $this->created_at = $created_at;
+    }
+
+    public function getRoadtripsNumber(): int
+    {
+        $roadtripManager = new RoadtripManager();
+        $roadtrips = $roadtripManager->findBy(['user_id' => $this->getId()]);
+        return count($roadtrips);
     }
 }

@@ -17,6 +17,8 @@
 
     <h1 id="roadtrip" class="text-xl text-orange font-medium font-second lg:text-4xl">Éditer un road trip</h1>
 
+    <a href=<?= "?path=/roadtrip/" . $data['roadtrip']->getId() ?> class="border-orange border-2 text-orange font-medium py-2 px-6 rounded-main mt-4 lg:text-lg lg:px-6 lg:py-3">Voir le road trip</a>
+
     <form method="post" enctype="multipart/form-data" class="flex flex-col gap-4 w-4/5 mx-auto mt-6 md:w-3/5">
         <input type="hidden" name="edit-roadtrip">
 
@@ -35,7 +37,7 @@
         </select>
 
         <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl">Image du road trip</h2>
-        <input type="file" name="file" id="image" accept="image/png, image/jpeg" value=<?= $data['roadtrip']->getImage()->getFilepath() ?> required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black file:bg-orange file:text-white file:rounded-main file:border-orange file:border file:px-2 focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
+        <input type="file" name="file" id="image" accept="image/png, image/jpeg" value=<?= $data['roadtrip']->getImage()->getFilepath() ?> required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black file:bg-orange file:text-white file:rounded-main file:border-orange file:border file:px-2 focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 file:mr-4">
 
         <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Modifier</button>
     </form>
@@ -89,12 +91,12 @@
         <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Ajouter</button>
     </form>
 
-    <div class="w-4/5 mx-auto flex flex-col items-center border-red border rounded-main mt-6 py-4 px-8 xl:w-3/5">
-        <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl text-red">Supprimer le roadtrip</h2>
+    <div class="w-4/5 mx-auto flex flex-col items-center border-red border rounded-main mt-6 gap-6 py-4 px-8 xl:w-3/5">
+        <h2 class="font-medium text-center text-lg font-second lg:text-xl text-red">Supprimer le roadtrip</h2>
         <p class="text-red font-medium text-center">Attention, cette action est irréversible.</p>
         <form method="post" class="flex flex-col gap-4 md:w-3/5">
             <input type="hidden" name="delete-roadtrip">
-            <button type="submit" class="bg-red text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Supprimer le road trip</button>
+            <button type="submit" class="bg-red text-sm rounded-main px-4 py-2 mx-auto text-white lg:text-lg lg:px-6 lg:py-3">Supprimer le road trip</button>
         </form>
     </div>
 </div>

@@ -65,18 +65,22 @@ class UserController extends AbstractController
             $this->redirectToRoute('/');
         }
 
-        if (isset($_POST['email']) && isset($_POST['password'])) {
+        if (isset($_POST['login'])) {
             $user = $userManager->findOneBy([
                 'email' => $_POST['email'],
             ]);
 
-            if (password_verify($_POST['password'], $user->getPassword())) {
-                $authenticator->login($user->getId());
-                $flash->flash('login', 'Connexion réussie', "success");
-                $this->redirectToRoute('/');
-            } else {
+            if (!$user) {
                 $flash->flash('login', 'Email ou mot de passe incorrect', "error");
+            }else {
+                if (password_verify($_POST['password'], $user->getPassword())) {
+                    $authenticator->login($user->getId());
+                    $this->redirectToRoute('/', ['flash' => $flash->flash('login', 'Connexion réussie', "success")]);
+                } else {
+                    $flash->flash('login', 'Email ou mot de passe incorrect', "error");
+                }
             }
+
         }
 
         $this->renderView('auth/login.php', ['flash' => $flash]);
@@ -106,60 +110,65 @@ class UserController extends AbstractController
 
         $userManager = new UserManager();
 
-        if (isset($_POST['username'])) {
+        if (isset($_POST['edit-username'])) {
 
             $user->setUsername($_POST['username']);
 
             $statement = $userManager->editUsername($user);
 
             if ($statement instanceof \PDOStatement) {
-                $flash->flash('pseudo', 'Pseudo mis à jour', "success");
+                $flash->flash('profil', 'Pseudo mis à jour', "success");
                 $this->redirectToRoute('profil');
             } else {
                 $flash->flash('profil', 'Une erreur est survenue', "error");
             }
         }
 
-        if (isset($_POST['email'])) {
+        if (isset($_POST['edit-email'])) {
             $user->setEmail($_POST['email']);
 
             $statement = $userManager->editEmail($user);
 
             if ($statement instanceof \PDOStatement) {
-                $flash->flash('email', 'Email mis à jour !', "success");
+                $flash->flash('profil', 'Email mis à jour !', "success");
                 $this->redirectToRoute('profil');
             } else {
                 $flash->flash('profil', 'Une erreur est survenue', "error");
             }
         }
 
-        if (isset($_POST['password'])) {
+        if (isset($_POST['edit-password'])) {
             $user->setPassword($_POST['password']);
 
             $statement = $userManager->editPassword($user);
 
             if ($statement instanceof \PDOStatement) {
-                $flash->flash('password', 'Mot de passe mis à jour !', "success");
+                $flash->flash('profil', 'Mot de passe mis à jour !', "success");
                 $this->redirectToRoute('profil');
             } else {
                 $flash->flash('profil', 'Une erreur est survenue', "error");
             }
         }
 
-        $created_at = $user->getCreated_at();
-        $created_at = date('d/m/Y', strtotime($created_at));
+        if (isset($_POST['delete-account'])) {
+
+            if (!password_verify($_POST['deletePassword'], $user->getPassword())) {
+                $this->redirectToRoute('/profil', ['flash' => $flash->flash('profil', 'Mot de passe incorrect', "error")]);
+            }
+            $statement = $userManager->delete($user);
+
+            if ($statement instanceof \PDOStatement) {
+                $authenticator->logout();
+                $this->redirectToRoute('/', ['flash' => $flash->flash('profil', 'Votre compte a bien été supprimé', "success")]);
+            } else {
+                $flash->flash('profil', 'Une erreur est survenue', "error");
+            }
+        }
 
         $this->renderView(
             'main/profil.php',
             [
-                'seo' => [
-                    'title' => 'Mon profil',
-                ],
-                'user' => [
-                    'username' => $user->getUsername(),
-                    'email' => $user->getEmail(),
-                    'created_at' => $created_at,
-                ],
+                'user' => $user,
                 'flash' => $flash,
             ],
         );
