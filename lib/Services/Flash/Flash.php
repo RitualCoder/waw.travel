@@ -24,11 +24,15 @@ class Flash
 
     private function format_flash_message(array $flash_message): string
     {
-        return sprintf(
-            '<div class="alert alert-%s">%s</div>',
-            $flash_message['type'],
-            $flash_message['message']
-        );
+        if ($flash_message['type'] === self::FLASH_ERROR) {
+            return '<p class="text-red">' . $flash_message['message'] . '</p>';
+        } elseif ($flash_message['type'] === self::FLASH_WARNING) {
+            return '<p class="text-yellow">' . $flash_message['message'] . '</p>';
+        } elseif ($flash_message['type'] === self::FLASH_INFO) {
+            return '<p class="text-blue">' . $flash_message['message'] . '</p>';
+        } elseif ($flash_message['type'] === self::FLASH_SUCCESS) {
+            return '<p class="text-green">' . $flash_message['message'] . '</p>';
+        }
     }
 
     public function display_flash_message(string $name): void

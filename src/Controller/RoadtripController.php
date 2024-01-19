@@ -22,8 +22,7 @@ class RoadtripController extends AbstractController
         $flash = new Flash();
 
         if (!$authenticator->isLoggedIn()) {
-            $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error");
-            $this->redirectToRoute('/connexion', ['flash' => $flash]);            
+            $this->redirectToRoute('/connexion', ['flash' => $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error")]);
         }
 
         $RoadtripManager = new RoadtripManager();
@@ -31,6 +30,7 @@ class RoadtripController extends AbstractController
 
         $this->renderView('roadtrip/list.php', [
             'roadtrips' => $roadtrips,
+            'flash' => $flash,
         ]);
     }
     public function show($id): void
@@ -51,7 +51,7 @@ class RoadtripController extends AbstractController
 
         if (!$authenticator->isLoggedIn()) {
             $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error");
-            $this->redirectToRoute('/connexion', ['flash' => $flash]);    
+            $this->redirectToRoute('/connexion', ['flash' => $flash]);
         }
 
         $VehicleManager = new VehicleManager();
@@ -120,7 +120,7 @@ class RoadtripController extends AbstractController
 
             $StepManager->add($step2);
 
-            $this->redirectToRoute('/');
+            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('add-roadtrip', 'Le roadtrip a bien été ajouté', "success")]);
         }
         -$this->renderView('roadtrip/add.php', [
             'vehicles' => $vehicles,
@@ -132,12 +132,15 @@ class RoadtripController extends AbstractController
         $flash = new Flash();
 
         if (!$authenticator->isLoggedIn()) {
-            $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error");
-            $this->redirectToRoute('/connexion', ['flash' => $flash]);            
+            $this->redirectToRoute('/connexion', ['flash' => $flash->flash('connexion', 'Vous devez être connecté pour accéder à cette page', "error")]);
         }
 
         $RoadtripManager = new RoadtripManager();
         $roadtrip = $RoadtripManager->find($id);
+
+        if ($roadtrip->getUser_id() != $_SESSION['id']) {
+            $this->redirectToRoute('/connexion', ['flash' => $flash->flash('connexion', 'Vous n\'avez pas accès à cette page', "error")]);
+        }
 
         $VehicleManager = new VehicleManager();
         $vehicles = $VehicleManager->findAll();
@@ -147,7 +150,6 @@ class RoadtripController extends AbstractController
 
 
         $StepManager = new StepManager();
-        $steps = $StepManager->findBy(['roadtrip_id' => $id], ['number' => 'ASC']);
 
         // edition roadtrip
         if (isset($_POST['edit-roadtrip'])) {
@@ -182,7 +184,7 @@ class RoadtripController extends AbstractController
 
             $RoadtripManager->edit($roadtrip);
 
-            $flash->flash('edit-roadtrip', 'Le roadtrip a bien été modifié', "success");
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer/#roadtrip', ['flash' => $flash->flash('edit-roadtrip', 'Le roadtrip a bien été modifié', "success")]);
         }
 
         // ajout étape
@@ -198,9 +200,7 @@ class RoadtripController extends AbstractController
 
             $StepManager->add($step);
 
-            $flash->flash('add-step', 'L\'étape a bien été ajoutée', "success");
-
-            $this->redirectToRoute('/roadtrip/' . $id . '/modifier');
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('add-step', 'L\'étape a bien été ajoutée', "success")]);
         }
 
         // suppression étape
@@ -210,9 +210,7 @@ class RoadtripController extends AbstractController
 
             $StepManager->delete($stepDelete);
 
-            $flash->flash('delete-step', 'L\'étape a bien été supprimée', "success");
-
-            $this->redirectToRoute('/roadtrip/' . $id . '/modifier');
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('delete-step', 'L\'étape a bien été supprimée', "success")]);
         }
 
         // suppression roadtrip
@@ -221,16 +219,12 @@ class RoadtripController extends AbstractController
 
             $RoadtripManager->delete($roadtripDelete);
 
-            $flash->flash('delete-roadtrip', 'Le roadtrip a bien été supprimé', "success");
-
-            $this->redirectToRoute('/roadtrips');
+            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('delete-roadtrip', 'Le roadtrip a bien été supprimé', "success")]);
         }
 
         $this->renderView('roadtrip/edit.php', [
             'roadtrip' => $roadtrip,
             'vehicles' => $vehicles,
-            'image' => $image,
-            'steps' => $steps,
             'flash' => $flash,
         ]);
     }

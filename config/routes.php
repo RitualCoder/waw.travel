@@ -41,7 +41,7 @@ const ROUTES = [
         'method' => 'show',
         'name' => 'app_roadtrip_show'
     ],
-    '/roadtrip/{id}/modifier' => [
+    '/roadtrip/{id}/editer' => [
         'controller' => App\Controller\RoadtripController::class,
         'method' => 'edit',
         'name' => 'app_roadtrip_edit'
