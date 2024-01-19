@@ -29,6 +29,10 @@ class RoadtripController extends AbstractController
         $roadtrips = $RoadtripManager->findBy(['user_id' => $_SESSION['id']], ['id' => 'DESC']);
 
         $this->renderView('roadtrip/list.php', [
+            'seo' => [
+                'title' => 'Mon carne de voyage',
+                'description' => 'Mon carnet de voyage sur Waw.travel',
+            ],
             'roadtrips' => $roadtrips,
             'flash' => $flash,
         ]);
@@ -39,6 +43,10 @@ class RoadtripController extends AbstractController
         $roadtrip = $RoadtripManager->find($id);
 
         $this->renderView('roadtrip/show.php', [
+            'seo' => [
+                'title' => $roadtrip->getName(),
+                'description' => 'Découvrez le roadtrip ' . $roadtrip->getName() . ' sur Waw.travel',
+            ],
             'roadtrip' => $roadtrip,
         ]);
     }
@@ -120,9 +128,13 @@ class RoadtripController extends AbstractController
 
             $StepManager->add($step2);
 
-            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('add-roadtrip', 'Le roadtrip a bien été ajouté', "success")]);
+            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('roadtrips', 'Le roadtrip a bien été ajouté', "success")]);
         }
         -$this->renderView('roadtrip/add.php', [
+            'seo' => [
+                'title' => 'Ajouter un roadtrip',
+                'description' => 'Ajouter un roadtrip sur Waw.travel',
+            ],
             'vehicles' => $vehicles,
         ]);
     }
@@ -184,7 +196,7 @@ class RoadtripController extends AbstractController
 
             $RoadtripManager->edit($roadtrip);
 
-            $this->redirectToRoute('/roadtrip/' . $id . '/editer/#roadtrip', ['flash' => $flash->flash('edit-roadtrip', 'Le roadtrip a bien été modifié', "success")]);
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer', ['flash' => $flash->flash('edit-roadtrip', 'Le roadtrip a bien été modifié', "success")]);
         }
 
         // ajout étape
@@ -200,7 +212,7 @@ class RoadtripController extends AbstractController
 
             $StepManager->add($step);
 
-            $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('add-step', 'L\'étape a bien été ajoutée', "success")]);
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer', ['flash' => $flash->flash('edit-roadtrip', 'L\'étape a bien été ajoutée', "success")]);
         }
 
         // suppression étape
@@ -210,7 +222,7 @@ class RoadtripController extends AbstractController
 
             $StepManager->delete($stepDelete);
 
-            $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('delete-step', 'L\'étape a bien été supprimée', "success")]);
+            $this->redirectToRoute('/roadtrip/' . $id . '/editer', ['flash' => $flash->flash('edit-roadtrip', 'L\'étape a bien été supprimée', "success")]);
         }
 
         // suppression roadtrip
@@ -219,10 +231,14 @@ class RoadtripController extends AbstractController
 
             $RoadtripManager->delete($roadtripDelete);
 
-            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('delete-roadtrip', 'Le roadtrip a bien été supprimé', "success")]);
+            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('roadtrips', 'Le roadtrip a bien été supprimé', "success")]);
         }
 
         $this->renderView('roadtrip/edit.php', [
+            'seo' => [
+                'title' => 'Modifier un roadtrip',
+                'description' => 'Modifier un roadtrip sur Waw.travel',
+            ],
             'roadtrip' => $roadtrip,
             'vehicles' => $vehicles,
             'flash' => $flash,

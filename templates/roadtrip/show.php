@@ -1,6 +1,4 @@
 <?php
-$image = $data['roadtrip']->getImage();
-$imageFilepath = $image->getFilepath();
 $vehicle = $data['roadtrip']->getVehicle();
 $vehicleName = $vehicle->getName();
 $vehicleIcon = $vehicle->getIcon();

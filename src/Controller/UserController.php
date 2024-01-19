@@ -38,7 +38,7 @@ class UserController extends AbstractController
                 // Si l'ajout est réussi, procédez à la connexion de l'utilisateur
                 if ($statement instanceof \PDOStatement) {
                     $authenticator->login($userId->getId());
-                    $this->redirectToRoute('/', ['flash' => $flash->flash('register', 'Inscription réussie. Vous êtes maintenant connecté.', "success")]);
+                    $this->redirectToRoute('/', ['flash' => $flash->flash('home', 'Inscription réussie. Vous êtes maintenant connecté.', "success")]);
                 }
             } catch (\Throwable $th) {
                 // Gestion des erreurs
@@ -53,7 +53,13 @@ class UserController extends AbstractController
             }
         }
 
-        $this->renderView('auth/register.php', ['flash' => $flash]);
+        $this->renderView('auth/register.php', [
+            'seo' => [
+                'title' => 'Inscription',
+                'description' => 'Inscription sur Waw.travel',
+            ],
+            'flash' => $flash
+        ]);
     }
     public function login(): void
     {
@@ -72,18 +78,23 @@ class UserController extends AbstractController
 
             if (!$user) {
                 $flash->flash('login', 'Email ou mot de passe incorrect', "error");
-            }else {
+            } else {
                 if (password_verify($_POST['password'], $user->getPassword())) {
                     $authenticator->login($user->getId());
-                    $this->redirectToRoute('/', ['flash' => $flash->flash('login', 'Connexion réussie', "success")]);
+                    $this->redirectToRoute('/');
                 } else {
                     $flash->flash('login', 'Email ou mot de passe incorrect', "error");
                 }
             }
-
         }
 
-        $this->renderView('auth/login.php', ['flash' => $flash]);
+        $this->renderView('auth/login.php', [
+            'seo' => [
+                'title' => 'login',
+                'description' => 'Connexion sur Waw.travel',
+            ],
+            'flash' => $flash
+        ]);
     }
 
     public function logout(): void
@@ -91,7 +102,7 @@ class UserController extends AbstractController
         $authenticator = new Authenticator();
         $flash = new Flash();
         $authenticator->logout();
-        $this->redirectToRoute('/', ['flash' => $flash->flash('logout', 'Vous êtes maintenant déconnecté', "success")]);
+        $this->redirectToRoute('/', ['flash' => $flash->flash('home', 'Vous êtes maintenant déconnecté', "success")]);
     }
 
     public function profil(): void
@@ -159,7 +170,7 @@ class UserController extends AbstractController
 
             if ($statement instanceof \PDOStatement) {
                 $authenticator->logout();
-                $this->redirectToRoute('/', ['flash' => $flash->flash('profil', 'Votre compte a bien été supprimé', "success")]);
+                $this->redirectToRoute('/', ['flash' => $flash->flash('home', 'Votre compte a bien été supprimé', "success")]);
             } else {
                 $flash->flash('profil', 'Une erreur est survenue', "error");
             }
@@ -168,6 +179,10 @@ class UserController extends AbstractController
         $this->renderView(
             'main/profil.php',
             [
+                'seo' => [
+                    'title' => 'Profil',
+                    'description' => 'Profil de l\'utilisateur',
+                ],
                 'user' => $user,
                 'flash' => $flash,
             ],
