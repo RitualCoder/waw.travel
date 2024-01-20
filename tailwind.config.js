@@ -13,7 +13,7 @@ module.exports = {
       'filter': '#04051266',
       'red': '#F11C1C',
       'green': '#16C25B',
-      'yellow': '#E5DD27',
+      'yellow': '#F2E320',
     },
     fontFamily: {
       'main': ['Montserrat', 'sans-serif'],
