@@ -7,14 +7,14 @@
 
   <section class="bg-home bg-center bg-no-repeat bg-cover h-auto md:h-60 lg:h-96">
     <div class="flex flex-col text-white justify-center items-center w-full h-full bg-filter py-4 gap-4 lg:gap-8 px-4 md:px-8 lg:px-16">
-      <h1 class="font-second text-xl lg:text-4xl">Waw.travel</h1>
+      <h1 class="font-second text-xl lg:text-4xl">Partagez vos voyages</h1>
       <p class="w-11/12 xl:w-1/2 mx-auto text-center font-medium text-base lg:text-lg">Découvrez des itinéraires captivants, des récits inspirants et des conseils pour des voyages inoubliables. Rejoignez une communauté passionnée de voyageurs. Prêt pour l'évasion ?</p>
     </div>
   </section>
-  <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-2xl text-orange mt-6">Nos derniers ajouts</h2>
-  <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-6 lg:px-12 xl:px-20 lg:pt-12">
+  <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-2xl text-orange mt-6 lg:mt-8">Nos derniers ajouts</h2>
+  <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 lg:px-12 xl:px-20 lg:pt-12 gap-4">
     <?php foreach ($data['roadtrips'] as $roadtrip) : ?>
-      <article class="shadow-main rounded-main py-4 px-4 relative">
+      <article class="shadow-main rounded-main py-4 px-4">
         <a href=<?= '/?path=/roadtrip/' . $roadtrip->getId() ?>>
           <img src="/images/home.jpg" alt="" class="rounded-main" />
 
@@ -39,9 +39,6 @@
               <p class="font-medium text-sm md:text-base">À : <?= $roadtrip->getSteps()[$roadtrip->getStepsNumber() - 1]->getName() ?></p>
             </span>
           </div>
-        </a>
-        <a href=<?= '/?path=/roadtrip/' . $roadtrip->getId() . '/editer' ?> class="absolute top-6 right-6 bg-orange rounded-main p-2">
-          <img src="/images/icons/pen.svg" alt="edit icon" />
         </a>
       </article>
     <?php endforeach; ?>

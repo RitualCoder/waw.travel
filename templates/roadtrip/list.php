@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-6 lg:px-12 xl:px-20 lg:pt-16">
+    <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 lg:px-12 xl:px-20 lg:pt-16">
         <?php foreach ($data['roadtrips'] as $roadtrip) : ?>
             <article class="shadow-main rounded-main py-4 px-4 relative">
                 <a href=<?= '/?path=/roadtrip/' . $roadtrip->getId() ?>>
