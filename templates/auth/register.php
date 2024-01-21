@@ -22,6 +22,6 @@
                 <p class="text-center">Vous avez déjà un compte ? <a href="?path=/connexion" class="text-orange">Se connecter</a></p>
             </div>
         </div>
-        <img src="/images/register.jpg" alt="login image" class="hidden md:flex lg:flex md:h-full lg:h-full md:w-1/2 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
+        <img src="images/register.jpg" alt="login image" class="hidden md:flex lg:flex md:h-full lg:h-full md:w-1/2 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
     </section>
 </div>
