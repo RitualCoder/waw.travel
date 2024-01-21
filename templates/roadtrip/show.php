@@ -7,6 +7,8 @@ $vehicleIcon = $vehicle->getIcon();
 $user = $data['roadtrip']->getUser();
 $username = $user->getUsername();
 
+require dirname(__DIR__, 2) . '/config/apiKey.php';
+
 ?>
 
 <div class="w-full">
@@ -21,7 +23,7 @@ $username = $user->getUsername();
                     </span>
                     <span class="flex items-center gap-2">
                         <img class="h-7 lg:h-9" src="images/icons/compass.svg" alt="compass icon">
-                        <p class="font-medium text-sm md:text-base">1 256 km</p>
+                        <p class="font-medium text-sm md:text-base"><?= $data['roadtrip']->getDistance() ?> km</p>
                     </span>
                 </div>
                 <span class="flex items-center gap-2">
@@ -40,6 +42,9 @@ $username = $user->getUsername();
             </div>
         </div>
         <img src="images/home.jpg" alt=<?= $data['roadtrip']->getName() ?> class="hidden md:flex lg:flex md:h-full lg:h-full md:w-3/5 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
+    </section>
+    <section class="w-4/5 py-4 flex justify-center mx-auto mt-10">
+        <div id="map" style="height: 400px; width: 100%; border-radius: 10px"></div>
     </section>
     <section class="py-4 flex justify-center">
         <table class="w-4/5 mx-auto">
@@ -67,9 +72,6 @@ $username = $user->getUsername();
             </tbody>
         </table>
     </section>
-    <section class="flex justify-end lg:justify-center items-center px-16 mt-10">
-        <div id="map" style="height: 400px; width: 100%;"></div>
-    </section>
     <script>
         (g => {
             var h, a, k, p = "The Google Maps JavaScript API",
@@ -96,7 +98,7 @@ $username = $user->getUsername();
             d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
         })
         ({
-            key: "AIzaSyBQaXUH_JAVuswnfgJkeQ4yTZwjRjAcxj8",
+            key: "<?= GOOGLE_MAPS_API_KEY?>",
             v: "beta"
         });
     </script>
@@ -126,7 +128,7 @@ $username = $user->getUsername();
             <?php foreach ($steps as $step) : ?>
                 waypoints.push({
                     location: new google.maps.LatLng(<?= $step->getLatitude() ?>, <?= $step->getLongitude() ?>),
-                    stopover: false
+                    stopover: false,
                 });
             <?php endforeach; ?>
 
@@ -156,17 +158,8 @@ $username = $user->getUsername();
             directionsService.route(request, function(result, status) {
                 if (status === 'OK') {
                     directionsRenderer.setDirections(result);
-
-                    // Accessing the distance information
-                    const distance = result.routes[0].legs.reduce((total, leg) => total + leg.distance.value, 0);
-
-                    // Convert distance from meters to kilometers
-                    const distanceInKilometers = distance / 1000;
-
-                    // Afficher la distance dans la console (vous pouvez l'afficher à un autre endroit selon vos besoins)
-                    console.log(`Distance totale : ${distanceInKilometers} km`);
                 } else {
-                    console.error('Error calculating the route:', status);
+                    console.log('Directions request failed due to ' + status);
                 }
             });
         }
