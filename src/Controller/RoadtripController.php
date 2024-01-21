@@ -104,25 +104,26 @@ class RoadtripController extends AbstractController
             // Ajout des étapes
             $step1->setName($_POST['first-step-name']);
             $step1->setNumber($_POST['first-step-number']);
-            $step1->setCoordinates($_POST['first-step-coordonates']);
+            $step1->setLatitude($_POST['first-step-latitude']);
+            $step1->setLongitude($_POST['first-step-longitude']);
             $step1->setDate_departure($_POST['first-step-departure-date']);
             $step1->setDate_arrival($_POST['first-step-arrival-date']);
             $step1->setRoadtrip_id($roadtripId[0]->getId());
 
-            $StepManager->add($step1);
-
             $step2->setName($_POST['last-step-name']);
             $step2->setNumber($_POST['last-step-number']);
-            $step2->setCoordinates($_POST['last-step-coordonates']);
+            $step2->setLatitude($_POST['last-step-latitude']);
+            $step2->setLongitude($_POST['last-step-longitude']);
             $step2->setDate_departure($_POST['last-step-departure-date']);
             $step2->setDate_arrival($_POST['last-step-arrival-date']);
             $step2->setRoadtrip_id($roadtripId[0]->getId());
 
+            $StepManager->add($step1);
             $StepManager->add($step2);
 
             $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('add-roadtrip', 'Le roadtrip a bien été ajouté', "success")]);
         }
-        -$this->renderView('roadtrip/add.php', [
+        $this->renderView('roadtrip/add.php', [
             'vehicles' => $vehicles,
         ]);
     }
@@ -193,7 +194,8 @@ class RoadtripController extends AbstractController
 
             $step->setName($_POST['step-name']);
             $step->setNumber($_POST['step-number']);
-            $step->setCoordinates($_POST['step-coordonates']);
+            $step->setLongitude($_POST['step-longitude']);
+            $step->setLatitude($_POST['step-latitude']);
             $step->setDate_departure($_POST['step-departure-date']);
             $step->setDate_arrival($_POST['step-arrival-date']);
             $step->setRoadtrip_id($id);

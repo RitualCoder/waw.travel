@@ -20,7 +20,7 @@
     <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-6 lg:px-12 xl:px-20 lg:pt-16">
         <?php foreach ($data['roadtrips'] as $roadtrip) : ?>
             <article class="shadow-main rounded-main py-4 px-4 relative">
-                <a href=<?= '/?path=/roadtrip/' . $roadtrip->getId() ?>>
+                <a href=<?= '?path=/roadtrip/' . $roadtrip->getId() ?>>
                     <img src="images/home.jpg" alt="" class="rounded-main" />
 
                     <div class="py-2 flex flex-col gap-4">
@@ -45,7 +45,7 @@
                         </span>
                     </div>
                 </a>
-                <a href=<?= '/?path=/roadtrip/' . $roadtrip->getId() . '/editer' ?> class="absolute top-6 right-6 bg-orange rounded-main p-2">
+                <a href=<?= '?path=/roadtrip/' . $roadtrip->getId() . '/editer' ?> class="absolute top-6 right-6 bg-orange rounded-main p-2">
                     <img src="images/icons/pen.svg" alt="edit icon" />
                 </a>
             </article>
