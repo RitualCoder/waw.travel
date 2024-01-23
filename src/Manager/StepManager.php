@@ -27,7 +27,8 @@ class StepManager extends AbstractManager {
         return $this->create(Step::class, [
             'name' => $step->getName(),
             'number' => $step->getNumber(),
-            'coordinates' => $step->getCoordinates(),
+            'latitude' => $step->getLatitude(),
+            'longitude' => $step->getLongitude(),
             'date_departure' => $step->getDate_departure(),
             'date_arrival' => $step->getDate_arrival(),
             'roadtrip_id' => $step->getRoadtrip_id(),
@@ -38,7 +39,8 @@ class StepManager extends AbstractManager {
         return $this->update(Step::class, [
             'name' => $step->getName(),
             'number' => $step->getNumber(),
-            'coordinates' => $step->getCoordinates(),
+            'latitude' => $step->getLatitude(),
+            'longitude' => $step->getLongitude(),
             'date_departure' => $step->getDate_departure(),
             'date_arrival' => $step->getDate_arrival(),
             'roadtrip_id' => $step->getRoadtrip_id(),
