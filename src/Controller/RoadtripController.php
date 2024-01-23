@@ -54,6 +54,7 @@ class RoadtripController extends AbstractController
                 'description' => 'Découvrez le roadtrip ' . $roadtrip->getName() . ' sur Waw.travel',
             ],
             'roadtrip' => $roadtrip,
+            'canEdit' => $_SESSION['id'] == $roadtrip->getUser_id() ? true : false,
         ]);
     }
 

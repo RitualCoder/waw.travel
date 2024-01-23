@@ -28,7 +28,7 @@
 
         <form method="post" class="flex flex-col items-center gap-4">
             <input type="hidden" name="edit-username">
-            <input name="username" type="text" placeholder="Pseudo" class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0" required>
+            <input name="username" type="text" placeholder="Pseudo" class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white" required>
             <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Modifier</button>
         </form>
 
@@ -36,7 +36,7 @@
 
         <form method="post" class="flex flex-col items-center gap-4">
             <input type="hidden" name="edit-email">
-            <input name="email" id="email" type="email" placeholder="Email" class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0" required>
+            <input name="email" id="email" type="email" placeholder="Email" class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0 bg-white" required>
             <button type="submit" class="bg-blue text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Modifier</button>
         </form>
 
@@ -44,7 +44,7 @@
 
         <form method="post" class="flex flex-col items-center gap-4">
             <input type="hidden" name="edit-password">
-            <input name="password" id="password" type="password" placeholder="Mot de passe" class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0" required>
+            <input name="password" id="password" type="password" placeholder="Mot de passe" class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white" required>
             <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Modifier</button>
         </form>
 
@@ -53,7 +53,7 @@
             <p class="text-red font-medium text-center">Attention, cette action est irréversible.</p>
             <form method="post" class="flex flex-col items-center gap-4">
                 <input type="hidden" name="delete-account">
-                <input name="deletePassword" id="deletePassword" type="password" placeholder="Mot de passe" class="border-red text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-red focus:ring-0" required>
+                <input name="deletePassword" id="deletePassword" type="password" placeholder="Mot de passe" class="border-red text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-red focus:ring-0 bg-white" required>
                 <button type="submit" class="bg-red text-sm rounded-main px-4 py-2 mx-auto text-white lg:text-lg lg:px-6 lg:py-3">Supprimer</button>
             </form>
         </div>
