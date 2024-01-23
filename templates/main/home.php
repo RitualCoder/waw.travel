@@ -23,7 +23,7 @@
             <div class="flex items-center gap-4 lg:gap-6 xl:gap-12">
               <span class="flex items-center gap-2">
                 <img class="h-7 xl:h-9" src="images/icons/compass.svg" alt="compass icon">
-                <p class="font-medium text-sm md:text-base">1 256 km</p>
+                <p class="font-medium text-sm md:text-base"><?= $roadtrip->getDistance() ?> km</p>
               </span>
               <span class="flex items-center gap-2">
                 <img class="h-7 xl:h-9" src="images/icons/crossroads.svg" alt="steps icon">

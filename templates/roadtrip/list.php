@@ -41,7 +41,7 @@
                     </div>
                 </a>
                 <a href=<?= '?path=/roadtrip/' . $roadtrip->getId() . '/editer' ?> class="absolute top-6 right-6 bg-orange rounded-main p-2">
-                    <img src="images/icons/pen.svg" alt="edit icon" />
+                    <img src="images/icons/pen.svg" alt="edit icon" class="cursor-pointer"/>
                 </a>
             </article>
         <?php endforeach; ?>

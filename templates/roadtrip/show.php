@@ -12,7 +12,7 @@ require dirname(__DIR__, 2) . '/config/apiKey.php';
 <div class="w-full">
     <section class="flex md:gap-8 items-center bg-home md:bg-none bg-cover bg-no-repeat bg-center py-4 justify-center md:flex md:py-0 md:h-80 md:justify-normal lg:justify-between lg:h-96 overflow-hidden lg:gap-0">
         <div class="md:w-2/5 xl:w-2/6 flex justify-end lg:justify-center items-center">
-            <div class="bg-white shadow-main rounded-main py-4 px-8 items-center flex flex-col gap-4 md:justify-between">
+            <div class="bg-white shadow-main rounded-main py-4 px-8 items-center flex flex-col gap-4 md:justify-between relative">
                 <h1 class="text-xl text-center font-medium font-second w-4/5"><?= $data['roadtrip']->getName() ?></h1>
                 <div class="flex items-center gap-4 lg:gap-12">
                     <span class="flex items-center gap-2">
@@ -37,6 +37,11 @@ require dirname(__DIR__, 2) . '/config/apiKey.php';
                     <p class="font-medium text-sm md:text-base"><?= $data['roadtrip']->getStepsNumber() ?> étapes</p>
                 </span>
                 <p class="font-medium text-xs md:text-sm">Par <span class="text-blue"><?= $username ?></span></p>
+                <?php if ($data['canEdit'] === true) : ?>
+                    <a href=<?= '?path=/roadtrip/' . $data['roadtrip']->getId() . '/editer' ?> class="bg-orange rounded-main p-2 cursor-pointer absolute bottom-3 right-3">
+                        <img src="images/icons/pen.svg" alt="edit icon" class="h-4" />
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
         <img src="images/home.jpg" alt=<?= $data['roadtrip']->getName() ?> class="hidden md:flex lg:flex md:h-full lg:h-full md:w-3/5 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
@@ -96,7 +101,7 @@ require dirname(__DIR__, 2) . '/config/apiKey.php';
             d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
         })
         ({
-            key: "<?= GOOGLE_MAPS_API_KEY?>",
+            key: "<?= GOOGLE_MAPS_API_KEY ?>",
             v: "beta"
         });
     </script>

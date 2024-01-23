@@ -12,11 +12,11 @@
     <form method="post" enctype="multipart/form-data" class="flex flex-col gap-4 w-4/5 mx-auto mt-6 md:w-3/5">
         <input type="hidden" name="edit-roadtrip">
 
-        <input type="text" name="name" id="name" value=<?= $data['roadtrip']->getName() ?> required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
+        <input type="text" name="name" id="name" value=<?= $data['roadtrip']->getName() ?> required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white">
 
         <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl">Type de véhicule</h2>
 
-        <select name="vehicle" id="vehicle" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
+        <select name="vehicle" id="vehicle" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white">
             <?php foreach ($data['vehicles'] as $vehicle) :
                 if ($vehicle->getId() == $data['roadtrip']->getVehicle_id()) { ?>
                     <option value="<?= $vehicle->getId() ?>" selected><?= $vehicle->getName() ?></option>
@@ -27,7 +27,7 @@
         </select>
 
         <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl">Image du road trip</h2>
-        <input type="file" name="file" id="image" accept="image/png, image/jpeg" value=<?= $data['roadtrip']->getImage()->getFilepath() ?> required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black file:bg-orange file:text-white file:rounded-main file:border-orange file:border file:px-2 focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 file:mr-4">
+        <input type="file" name="file" id="image" accept="image/png, image/jpeg" value=<?= $data['roadtrip']->getImage()->getFilepath() ?> required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black file:bg-orange file:text-white file:rounded-main file:border-orange file:border file:px-2 focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 file:mr-4 bg-white">
 
         <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Modifier</button>
     </form>
@@ -70,14 +70,14 @@
     <form action="" method="post" class="flex flex-col gap-4 w-4/5 mx-auto md:w-3/5">
         <input type="hidden" name="add-step">
 
-        <input type="text" name="step-name" id="step-name" placeholder="Nom de l’étape" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
-        <input type="number" name="step-number" id="step-number" placeholder="Numéro de l’étape" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
-        <input type="text" name="step-latitude" id="step-latitude" placeholder="Latitude" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
-        <input type="text" name="step-longitude" id="step-longitude" placeholder="Longitude" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
+        <input type="text" name="step-name" id="step-name" placeholder="Nom de l’étape" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white">
+        <input type="number" name="step-number" id="step-number" placeholder="Numéro de l’étape" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white">
+        <input type="text" name="step-latitude" id="step-latitude" placeholder="Latitude" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white">
+        <input type="text" name="step-longitude" id="step-longitude" placeholder="Longitude" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white">
         <label for="first-step-departure-date" class="lg:text-lg">Date d'arrivée :</label>
-        <input type="date" name="step-departure-date" id="step-departure-date" placeholder="Date d’arrivée" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
+        <input type="date" name="step-departure-date" id="step-departure-date" placeholder="Date d’arrivée" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white">
         <label for="first-step-departure-date" class="lg:text-lg">Date de départ :</label>
-        <input type="date" name="step-arrival-date" id="step-arrival-date" placeholder="Date de départ" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
+        <input type="date" name="step-arrival-date" id="step-arrival-date" placeholder="Date de départ" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 bg-white">
 
         <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Ajouter</button>
     </form>
