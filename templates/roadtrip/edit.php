@@ -1,6 +1,6 @@
 <div class="w-full flex flex-col pt-8 items-center relative">
     <?php if (isset($_SESSION['FLASH_MESSAGES']['edit-roadtrip'])) : ?>
-        <div class="fixed shadow-main rounded-main top-20 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[80]">
+        <div class="fixed shadow-main rounded-main top-20 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[120]">
             <?= $data['flash']->display_flash_message('edit-roadtrip'); ?>
         </div>
     <?php endif; ?>

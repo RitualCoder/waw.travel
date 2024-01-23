@@ -1,6 +1,6 @@
 <div class="w-full relative">
   <?php if (isset($_SESSION['FLASH_MESSAGES']['home'])) : ?>
-    <div class="absolute shadow-main rounded-main top-2 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[80]">
+    <div class="absolute shadow-main rounded-main top-2 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[120]">
       <?php $data['flash']->display_flash_message('home'); ?>
     </div>
   <?php endif; ?>

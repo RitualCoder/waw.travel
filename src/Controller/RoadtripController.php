@@ -115,7 +115,7 @@ class RoadtripController extends AbstractController
 
                 // Informations du départ
                 $step1->setName($_POST['first-step-name']);
-                $step1->setNumber($_POST['first-step-number']);
+                $step1->setNumber(1);
                 $step1->setLatitude($_POST['first-step-latitude']);
                 $step1->setLongitude($_POST['first-step-longitude']);
                 $step1->setDate_departure($_POST['first-step-departure-date']);
@@ -146,7 +146,7 @@ class RoadtripController extends AbstractController
                 $StepManager->add($step1);
                 $StepManager->add($step2);
 
-                $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('add-roadtrip', 'Le roadtrip a bien été ajouté', "success")]);
+                $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('roadtrips', 'Le roadtrip a bien été ajouté', "success")]);
             } catch (\Throwable $th) {
                 $errorMessage = $th->getMessage() ?: 'Une erreur inattendue s\'est produite.';
                 $flash->flash('add-roadtrip', $errorMessage, "error");
@@ -158,6 +158,7 @@ class RoadtripController extends AbstractController
                 'description' => 'Ajouter un roadtrip sur Waw.travel',
             ],
             'vehicles' => $vehicles,
+            'flash' => $flash,
         ]);
     }
     public function edit($id): void
@@ -250,11 +251,11 @@ class RoadtripController extends AbstractController
                 // On ajoute l'étape à la base de données
                 $StepManager->add($step);
 
-                $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('add-step', 'L\'étape a bien été ajoutée', "success")]);
+                $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('edit-roadtrip', 'L\'étape a bien été ajoutée', "success")]);
             } catch (\Exception $e) {
                 // Gestion des erreurs lors du calcul de la distance
-                $flash->flash('add-step', 'Erreur lors du calcul de la distance. Veuillez vérifier les coordonnées des étapes', "error");
-                // $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash]);
+                $flash->flash('edit-roadtrip', 'Erreur lors du calcul de la distance. Veuillez vérifier les coordonnées des étapes', "error");
+                $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash]);
             }
         }
 
@@ -275,10 +276,10 @@ class RoadtripController extends AbstractController
                 // On met à jour le roadtrip
                 $RoadtripManager->edit($roadtrip);
 
-                $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('delete-step', 'L\'étape a bien été supprimée', "success")]);
+                $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash->flash('edit-roadtrip', 'L\'étape a bien été supprimée', "success")]);
             } catch (\Exception $e) {
                 // Gestion des erreurs lors du calcul de la distance
-                $flash->flash('delete-step', 'Erreur lors du calcul de la distance. Veuillez vérifier les coordonnées des étapes', "error");
+                $flash->flash('edit-roadtrip', 'Erreur lors du calcul de la distance. Veuillez vérifier les coordonnées des étapes', "error");
                 $this->redirectToRoute('/roadtrip/' . $id . '/editer/#step', ['flash' => $flash]);
             }
         }
@@ -289,7 +290,7 @@ class RoadtripController extends AbstractController
 
             $RoadtripManager->delete($roadtripDelete);
 
-            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('delete-roadtrip', 'Le roadtrip a bien été supprimé', "success")]);
+            $this->redirectToRoute('/roadtrips', ['flash' => $flash->flash('roadtrips', 'Le roadtrip a bien été supprimé', "success")]);
         }
 
         $this->renderView('roadtrip/edit.php', [

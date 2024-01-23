@@ -1,4 +1,9 @@
-<div class="w-full flex flex-col pt-8 items-center">
+<div class="w-full flex flex-col pt-8 items-center relative">
+    <?php if (isset($_SESSION['FLASH_MESSAGES']['add-roadtrip'])) : ?>
+        <div class="fixed shadow-main rounded-main top-20 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[120]">
+            <?= $data['flash']->display_flash_message('add-roadtrip'); ?>
+        </div>
+    <?php endif; ?>
 
     <h1 class="text-xl text-blue font-medium font-second lg:text-4xl">Ajouter un roadtrip</h1>
 
@@ -19,7 +24,6 @@
 
         <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl">Départ</h2>
         <input type="text" name="first-step-name" id="first-step-name" placeholder="Nom de l’étape" required class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0">
-        <input type="number" name="first-step-number" id="first-step-number" placeholder="Numéro de l’étape" required class="border-blue rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0">
         <input type="text" name="first-step-latitude" id="first-step-latitude" placeholder="Latitude" required class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0">
         <input type="text" name="first-step-longitude" id="first-step-longitude" placeholder="Longitude" required class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0">
         <label for="first-step-departure-date" class="lg:text-lg">Date d'arrivée :</label>

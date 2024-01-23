@@ -36,8 +36,6 @@ class ServiceDistance
 
         $totalDistance = 0;
 
-        var_dump(implode('|', $waypoints));
-
         // Construire l'URL de l'API Distance Matrix avec toutes les étapes
         $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={$waypoints[0]}&destinations=" . implode('|', $waypoints) . "&key=$apiKey";
 
