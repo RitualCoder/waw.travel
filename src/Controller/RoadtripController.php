@@ -120,8 +120,6 @@ class RoadtripController extends AbstractController
                 $step2->setLongitude($_POST['last-step-longitude']);
                 $step2->setDate_departure($_POST['last-step-departure-date']);
                 $step2->setDate_arrival($_POST['last-step-arrival-date']);
-                $step1->setRoadtrip_id(0);
-                $step2->setRoadtrip_id(0);
 
                 // Calcul de la distance totale
                 $roadtrip->setDistance($distance->getTotalDistance([$step1, $step2]));

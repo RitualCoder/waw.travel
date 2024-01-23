@@ -6,7 +6,7 @@ require dirname(__DIR__, 3) . '/config/apiKey.php';
 
 class ServiceDistance
 {
-    public function getTotalDistance($steps)
+    public function getTotalDistance($steps = [])
     {
         if (count($steps) < 2) {
             throw new \Exception('Il n\'y a pas assez d\'étapes pour calculer une distance.');
