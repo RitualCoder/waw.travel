@@ -15,27 +15,27 @@
   <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 lg:px-10 xl:px-24 xl:gap-10 lg:pt-12 gap-4">
     <?php foreach ($data['roadtrips'] as $roadtrip) : ?>
       <article class="shadow-main rounded-main py-4 px-4">
-        <a href=<?= '/?path=/roadtrip/' . $roadtrip->getId() ?>>
-          <img src="/images/home.jpg" alt="" class="rounded-main" />
+        <a href=<?= '?path=/roadtrip/' . $roadtrip->getId() ?>>
+          <img src="images/home.jpg" alt="" class="rounded-main" />
 
           <div class="py-2 flex flex-col gap-4">
             <h2 class="text-xl font-second font-medium text-blue"><?= $roadtrip->getName() ?></h2>
             <div class="flex items-center gap-4 lg:gap-6 xl:gap-12">
               <span class="flex items-center gap-2">
-                <img class="h-7 xl:h-9" src="/images/icons/compass.svg" alt="compass icon">
+                <img class="h-7 xl:h-9" src="images/icons/compass.svg" alt="compass icon">
                 <p class="font-medium text-sm md:text-base">1 256 km</p>
               </span>
               <span class="flex items-center gap-2">
-                <img class="h-7 xl:h-9" src="/images/icons/crossroads.svg" alt="steps icon">
+                <img class="h-7 xl:h-9" src="images/icons/crossroads.svg" alt="steps icon">
                 <p class="font-medium text-sm md:text-base"><?= $roadtrip->getStepsNumber() ?> étapes</p>
               </span>
             </div>
             <span class="flex items-center gap-2">
-              <img class="h-7 xl:h-9" src="/images/icons/location.svg" alt="location icon">
+              <img class="h-7 xl:h-9" src="images/icons/location.svg" alt="location icon">
               <p class="font-medium text-sm md:text-base">De : <?= $roadtrip->getSteps()[0]->getName() ?></p>
             </span>
             <span class="flex items-center gap-2">
-              <img class="h-7 xl:h-9" src="/images/icons/location.svg" alt="location icon">
+              <img class="h-7 xl:h-9" src="images/icons/location.svg" alt="location icon">
               <p class="font-medium text-sm md:text-base">À : <?= $roadtrip->getSteps()[$roadtrip->getStepsNumber() - 1]->getName() ?></p>
             </span>
           </div>
