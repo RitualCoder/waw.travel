@@ -67,7 +67,7 @@
                             <input type="hidden" name="delete-step">
                             <input type="hidden" name="step-id" value="<?= $step->getId() ?>">
                             <button type="submit" class="flex items-center mx-auto">
-                                <img src="/images/icons/close.svg" alt="close icon" class="hidden md:block h-7">
+                                <img src="images/icons/close.svg" alt="close icon" class="hidden md:block h-7">
                                 <span class="md:hidden text-orange">Supprimer</span>
                             </button>
                         </form>

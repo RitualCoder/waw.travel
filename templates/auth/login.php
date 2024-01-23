@@ -21,6 +21,6 @@
                 <p class="text-center">Vous n’avez pas encore un compte ? <a href="?path=/inscription" class="text-blue">S’inscrire</a></p>
             </div>
         </div>
-        <img src="/images/login.jpg" alt="login image" class="hidden md:flex lg:flex md:h-full lg:h-full md:w-1/2 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
+        <img src="images/login.jpg" alt="login image" class="hidden md:flex lg:flex md:h-full lg:h-full md:w-1/2 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
     </section>
 </div>

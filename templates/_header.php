@@ -1,5 +1,5 @@
 <header class="shadow-main py-3 lg:px-20 px-6 w-full z-[100] h-auto flex justify-between items-center sticky bg-white">
-    <a href="?path=/"><img src="/images/logo.svg" alt="logo Waw.travel" class="h-8 w-auto lg:h-12"></a>
+    <a href="?path=/"><img src="images/logo.svg" alt="logo Waw.travel" class="h-8 w-auto lg:h-12"></a>
 
     <!-- Laptop Navigation -->
     <nav class="hidden lg:flex items-center font-second">
@@ -18,7 +18,7 @@
 
     <!-- icon burger menu -->
     <div id="burgerIcon" class="lg:hidden cursor-pointer flex flex-col items-center">
-        <img id="burgerIconImg" src="/images/icons/menu.svg" alt="menu icon" class="w-8 text-black">
+        <img id="burgerIconImg" src="images/icons/menu.svg" alt="menu icon" class="w-8 text-black">
     </div>
 
     <!-- Mobile Navigation -->
@@ -53,6 +53,6 @@
 
         // change icon burger menu
         var burgerIconImg = document.getElementById('burgerIconImg');
-        burgerIconImg.src = mobileNav.classList.contains('hidden') ? '/images/icons/menu.svg' : '/images/icons/close.svg';
+        burgerIconImg.src = mobileNav.classList.contains('hidden') ? 'images/icons/menu.svg' : 'images/icons/close.svg';
     });
 </script>

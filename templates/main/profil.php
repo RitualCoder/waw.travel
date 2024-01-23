@@ -13,7 +13,7 @@
                 <p class="font-medium text-sm md:text-base">Username : <span class="text-blue"><?= $data['user']->getUsername() ?></span></p>
                 <p class="font-medium text-sm md:text-base">Email : <span class="text-blue"><?= $data['user']->getEmail() ?></span></p>
                 <span class="flex items-center gap-2">
-                    <img src="/images/icons/earth.svg" alt="earth icon" class="h-6">
+                    <img src="images/icons/earth.svg" alt="earth icon" class="h-6">
                     <p class="font-medium text-sm md:text-base"><?= $data['user']->getRoadtripsNumber() ?> roadtrips</p>
                 </span>
                 <a href="?path=/roadtrips" class="bg-orange text-white py-2 px-6 rounded-main">Mon carnet de voyage</a>
@@ -21,7 +21,7 @@
                 <a href="?path=/deconnexion" class="bg-red text-white rounded-main py-2 px-4">Se déconnecter</a>
             </div>
         </div>
-        <img src="/images/profil.jpg" alt="login image" class="hidden md:flex lg:flex md:h-full lg:h-full md:w-1/2 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
+        <img src="images/profil.jpg" alt="login image" class="hidden md:flex lg:flex md:h-full lg:h-full md:w-1/2 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
     </section>
     <section class="flex flex-col pt-8 items-center gap-4 w-4/5 mx-auto">
         <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl text-orange">Modifier mon pseudo</h2>
