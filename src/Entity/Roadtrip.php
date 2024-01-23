@@ -12,6 +12,7 @@ class Roadtrip extends Security
 {
     private ?int $id;
     private ?string $name;
+    private ?int $distance;
     private ?int $user_id;
     private ?int $vehicle_id;
     private ?int $image_id;
@@ -31,11 +32,22 @@ class Roadtrip extends Security
         $this->name = $name;
     }
 
+    public function getDistance(): ?int
+    {
+        return $this->distance;
+    }
+
+    public function setDistance(int $distance): void
+    {
+        $this->distance = $distance;
+    }
+
     public function getUser(): ?object
     {
         $manager = new UserManager();
         return $manager->find($this->user_id);
     }
+
     public function getUser_id(): ?int
     {
         return $this->user_id;

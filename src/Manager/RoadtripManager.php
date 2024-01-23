@@ -32,6 +32,7 @@ class RoadtripManager extends AbstractManager
     {
         return $this->create(Roadtrip::class, [
             'name' => $roadtrip->getName(),
+            'distance' => $roadtrip->getDistance(),
             'user_id' => $roadtrip->getUser_id(),
             'vehicle_id' => $roadtrip->getVehicle_id(),
             'image_id' => $roadtrip->getImage_id(),
@@ -42,6 +43,7 @@ class RoadtripManager extends AbstractManager
     {
         return $this->update(Roadtrip::class, [
             'name' => $roadtrip->getName(),
+            'distance' => $roadtrip->getDistance(),
             'user_id' => $roadtrip->getUser_id(),
             'vehicle_id' => $roadtrip->getVehicle_id(),
             'image_id' => $roadtrip->getImage_id(),

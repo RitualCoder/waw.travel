@@ -1,6 +1,6 @@
 <div class="w-full flex flex-col pt-8 items-center relative">
     <?php if (isset($_SESSION['FLASH_MESSAGES']['edit-roadtrip'])) : ?>
-        <div class="absolute shadow-main rounded-main top-2 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[80]">
+        <div class="fixed shadow-main rounded-main top-20 right-2 text-sm md:text-base left-2 text-center md:text-left md:left-auto py-2 px-4 lg:top-8 lg:right-8 md:py-4 md:px-8 bg-white z-[80]">
             <?= $data['flash']->display_flash_message('edit-roadtrip'); ?>
         </div>
     <?php endif; ?>
@@ -57,7 +57,7 @@
                             <input type="hidden" name="delete-step">
                             <input type="hidden" name="step-id" value="<?= $step->getId() ?>">
                             <button type="submit" class="flex items-center mx-auto">
-                                <img src="/images/icons/close.svg" alt="close icon" class="hidden md:block h-7">
+                                <img src="images/icons/close.svg" alt="close icon" class="hidden md:block h-7">
                                 <span class="md:hidden text-orange">Supprimer</span>
                             </button>
                         </form>
@@ -72,7 +72,8 @@
 
         <input type="text" name="step-name" id="step-name" placeholder="Nom de l’étape" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
         <input type="number" name="step-number" id="step-number" placeholder="Numéro de l’étape" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
-        <input type="text" name="step-coordonates" id="step-coordonates" placeholder="Coordonnée GPS" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
+        <input type="text" name="step-latitude" id="step-latitude" placeholder="Latitude" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
+        <input type="text" name="step-longitude" id="step-longitude" placeholder="Longitude" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
         <label for="first-step-departure-date" class="lg:text-lg">Date d'arrivée :</label>
         <input type="date" name="step-departure-date" id="step-departure-date" placeholder="Date d’arrivée" required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0">
         <label for="first-step-departure-date" class="lg:text-lg">Date de départ :</label>

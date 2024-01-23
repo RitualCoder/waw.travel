@@ -1,6 +1,7 @@
 .idea
 
 config/database.php
+config/apiKey.php
 
 node_modules
 package-lock.json
