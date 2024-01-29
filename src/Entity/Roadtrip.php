@@ -74,10 +74,11 @@ class Roadtrip extends Security
         $this->vehicle_id = $vehicle_id;
     }
 
-    public function getImage(): ?object
+    public function getImage(): ?string
     {
         $manager = new ImageManager();
-        return $manager->find($this->image_id);
+        $image = $manager->find($this->image_id);
+        return $image->getFilepath();
     }
 
     public function getImage_id(): ?int

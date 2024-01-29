@@ -16,7 +16,7 @@
         <?php foreach ($data['roadtrips'] as $roadtrip) : ?>
             <article class="shadow-main rounded-main py-4 px-4 relative">
                 <a href=<?= '?path=/roadtrip/' . $roadtrip->getId() ?>>
-                    <img src="images/home.jpg" alt="" class="rounded-main" />
+                    <img src=<?= $roadtrip->getImage() ?> alt="" class="rounded-main max-h-80 w-full object-cover" />
 
                     <div class="py-2 flex flex-col gap-4">
                         <h2 class="text-xl font-second font-medium text-blue"><?= $roadtrip->getName() ?></h2>

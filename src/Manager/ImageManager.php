@@ -33,4 +33,11 @@ class ImageManager extends AbstractManager {
     public function delete(Image $image): \PDOStatement {
         return $this->remove(Image::class, $image->getId());
     }
+
+    public function edit(Image $image): \PDOStatement {
+        return $this->update(Image::class, [
+            'filepath' => $image->getFilepath(),
+            'created_at' => date('Y-m-d H:i:s'),
+        ], $image->getId());
+    }
 }

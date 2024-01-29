@@ -13,9 +13,11 @@ class ServiceImage
             // Construction du chemin de destination du fichier (absolue)
             $filePath = $destinationDir . $id . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
 
+            $fileName = "images/uploads/" . $id . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+
             // Déplacer le fichier téléchargé vers le dossier spécifié
             if (move_uploaded_file($file['tmp_name'], $filePath)) {
-                return $filePath;
+                return $fileName;
             } else {
                 throw new \Exception('Erreur lors du déplacement du fichier téléchargé.');
             }
@@ -27,7 +29,6 @@ class ServiceImage
     public function delete($filePath)
     {
         if (file_exists($filePath)) {
-            // Suppression du fichier
             if (unlink($filePath)) {
                 return true;
             } else {
@@ -36,12 +37,5 @@ class ServiceImage
         } else {
             throw new \Exception('Le fichier n\'existe pas.');
         }
-    }
-
-    public function update($oldFilePath, $newFile, $destinationDir)
-    {
-        $this->delete($oldFilePath);
-
-        return $this->upload($newFile, $destinationDir);
     }
 }

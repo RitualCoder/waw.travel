@@ -31,7 +31,7 @@ class RoadtripController extends AbstractController
 
         $this->renderView('roadtrip/list.php', [
             'seo' => [
-                'title' => 'Mon carnet de voyage',
+                'title' => 'Mon carne de voyage',
                 'description' => 'Mon carnet de voyage sur Waw.travel',
             ],
             'roadtrips' => $roadtrips,
@@ -44,10 +44,8 @@ class RoadtripController extends AbstractController
         $RoadtripManager = new RoadtripManager();
         $roadtrip = $RoadtripManager->find($id);
 
-        $flash = new Flash();
-
         if (!$roadtrip) {
-            $this->redirectToRoute('/', ['flash' => $flash->flash('home', 'Le roadtrip n\'existe pas ou plus', "error")]);
+            $this->redirectToRoute('/roadtrips');
         }
 
         $this->renderView('roadtrip/show.php', [
@@ -95,17 +93,18 @@ class RoadtripController extends AbstractController
 
                 // Ajout de l'image
                 if (isset($_FILES['file'])) {
-                    $uploadImage = new ServiceImage();
+
+                    $uploadImage = new ServiceImage($ImageManager);
 
                     try {
-                        $uploadDir = dirname(__DIR__, 2) . "/public/uploads/images/";
+                        $uploadDir = dirname(__DIR__, 2) . "/public/images/uploads/";
                         $filePath = $uploadImage->upload($_FILES["file"], $uploadDir);
                         // Ajout du chemin de l'image à l'objet Image
                         $image->setFilepath($filePath);
                         // Ajouter l'image à la base de données
                         $ImageManager->add($image);
                     } catch (\Throwable $th) {
-                        $th->getMessage();
+                        $this->redirectToRoute('/roadtrip/ajouter', ['flash' => $flash->flash('add-roadtrip', 'le fichier est trop volumineux', "error")]);
                     }
                 }
                 // récupérer l'id de l'image
@@ -176,14 +175,10 @@ class RoadtripController extends AbstractController
         $RoadtripManager = new RoadtripManager();
         $roadtrip = $RoadtripManager->find($id);
 
-        if (!$roadtrip) {
-            $this->redirectToRoute('/', ['flash' => $flash->flash('home', 'Le roadtrip n\'existe pas ou plus', "error")]);
-        }
-        
         if ($roadtrip->getUser_id() != $_SESSION['id']) {
             $this->redirectToRoute('/connexion', ['flash' => $flash->flash('connexion', 'Vous n\'avez pas accès à cette page', "error")]);
         }
-        
+
         $VehicleManager = new VehicleManager();
         $vehicles = $VehicleManager->findAll();
 
@@ -199,29 +194,23 @@ class RoadtripController extends AbstractController
             $roadtrip->setName($_POST['name']);
             $roadtrip->setVehicle($_POST['vehicle']);
 
-            $ImageManager = new ImageManager();
-            $image = new Image();
-            $filePath = null;
-
             // Ajout de l'image
             if (isset($_FILES['file'])) {
-                $uploadImage = new ServiceImage();
 
+                $uploadImage = new ServiceImage();
+                
                 try {
-                    $uploadDir = dirname(__DIR__, 2) . "/public/uploads/images/";
+                    $uploadDir = dirname(__DIR__, 2) . "/public/images/uploads/";
                     $filePath = $uploadImage->upload($_FILES["file"], $uploadDir);
-                    // Ajout du chemin de l'image à l'objet Image
+                    
+                    $uploadImage->delete($image->getFilepath());
+                    // edit du chemin de l'image à l'objet Image
                     $image->setFilepath($filePath);
-                    // Ajouter l'image à la base de données
-                    $ImageManager->add($image);
+                    // edition de l'image en base de données
+                    $ImageManager->edit($image);
                 } catch (\Throwable $th) {
-                    $th->getMessage();
+                    $this->redirectToRoute('/roadtrip/' . $id . '/editer/#roadtrip', ['flash' => $flash->flash('edit-roadtrip', 'le fichier est trop volumineux', "error")]);
                 }
-            }
-            // récupérer l'id de l'image
-            $imageUpload = $ImageManager->findBy(['filepath' => $filePath], ['id' => 'DESC'], 1);
-            if (isset($filePath)) {
-                $roadtrip->setImage($imageUpload[0]->getId());
             }
 
             $RoadtripManager->edit($roadtrip);

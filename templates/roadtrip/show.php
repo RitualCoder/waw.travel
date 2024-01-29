@@ -44,7 +44,7 @@ require dirname(__DIR__, 2) . '/config/apiKey.php';
                 <?php endif; ?>
             </div>
         </div>
-        <img src="images/home.jpg" alt=<?= $data['roadtrip']->getName() ?> class="hidden md:flex lg:flex md:h-full lg:h-full md:w-3/5 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
+        <img src=<?= $data['roadtrip']->getImage() ?> alt=<?= $data['roadtrip']->getName() ?> class="hidden md:flex lg:flex md:h-full lg:h-full md:w-3/5 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">
     </section>
     <section class="w-4/5 py-4 flex justify-center mx-auto mt-10">
         <div id="map" style="height: 400px; width: 100%; border-radius: 10px"></div>
@@ -134,8 +134,6 @@ require dirname(__DIR__, 2) . '/config/apiKey.php';
                     stopover: false,
                 });
             <?php endforeach; ?>
-
-            console.log(waypoints);
 
             // The map, centered at Uluru
             map = new Map(document.getElementById("map"), {

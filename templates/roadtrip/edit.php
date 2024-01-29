@@ -27,7 +27,7 @@
         </select>
 
         <h2 class="font-medium text-center mb-2 text-lg font-second lg:text-xl">Image du road trip</h2>
-        <input type="file" name="file" id="image" accept="image/png, image/jpeg" value=<?= $data['roadtrip']->getImage()->getFilepath() ?> required class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black file:bg-orange file:text-white file:rounded-main file:border-orange file:border file:px-2 focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 file:mr-4 bg-white">
+        <input type="file" name="file" id="image" accept="image/png, image/jpeg" class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black file:bg-orange file:text-white file:rounded-main file:border-orange file:border file:px-2 focus-visible:outline-none lg:text-lg lg:px-6 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0 file:mr-4 bg-white">
 
         <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white mt-4 lg:text-lg lg:px-6 lg:py-3">Modifier</button>
     </form>
