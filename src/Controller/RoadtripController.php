@@ -96,7 +96,7 @@ class RoadtripController extends AbstractController
                 // Ajout de l'image
                 if (isset($_FILES['file'])) {
 
-                    $uploadImage = new ServiceImage($ImageManager);
+                    $uploadImage = new ServiceImage();
 
                     try {
                         $uploadDir = dirname(__DIR__, 2) . "/public/images/uploads/";
