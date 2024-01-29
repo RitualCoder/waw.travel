@@ -31,7 +31,7 @@ class RoadtripController extends AbstractController
 
         $this->renderView('roadtrip/list.php', [
             'seo' => [
-                'title' => 'Mon carne de voyage',
+                'title' => 'Mon carnet de voyage',
                 'description' => 'Mon carnet de voyage sur Waw.travel',
             ],
             'roadtrips' => $roadtrips,
@@ -44,8 +44,10 @@ class RoadtripController extends AbstractController
         $RoadtripManager = new RoadtripManager();
         $roadtrip = $RoadtripManager->find($id);
 
+        $flash = new Flash();
+
         if (!$roadtrip) {
-            $this->redirectToRoute('/roadtrips');
+            $this->redirectToRoute('/', ['flash' => $flash->flash('home', 'Le roadtrip n\'existe pas ou plus', "error")]);
         }
 
         $this->renderView('roadtrip/show.php', [
@@ -174,10 +176,14 @@ class RoadtripController extends AbstractController
         $RoadtripManager = new RoadtripManager();
         $roadtrip = $RoadtripManager->find($id);
 
+        if (!$roadtrip) {
+            $this->redirectToRoute('/', ['flash' => $flash->flash('home', 'Le roadtrip n\'existe pas ou plus', "error")]);
+        }
+        
         if ($roadtrip->getUser_id() != $_SESSION['id']) {
             $this->redirectToRoute('/connexion', ['flash' => $flash->flash('connexion', 'Vous n\'avez pas accès à cette page', "error")]);
         }
-
+        
         $VehicleManager = new VehicleManager();
         $vehicles = $VehicleManager->findAll();
 

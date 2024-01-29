@@ -119,8 +119,6 @@ class UserController extends AbstractController
             'id' => $_SESSION['id'],
         ]);
 
-        $userManager = new UserManager();
-
         if (isset($_POST['edit-username'])) {
 
             $user->setUsername($_POST['username']);
