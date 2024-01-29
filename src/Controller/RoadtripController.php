@@ -288,7 +288,11 @@ class RoadtripController extends AbstractController
 
         // suppression roadtrip
         if (isset($_POST['delete-roadtrip'])) {
+            
+            $uploadImage = new ServiceImage();
+            $uploadImage->delete($image->getFilepath());
             $roadtripDelete = $RoadtripManager->find($id);
+
 
             $RoadtripManager->delete($roadtripDelete);
 
