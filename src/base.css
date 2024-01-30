@@ -9,3 +9,8 @@
 html {
   scroll-behavior: smooth;
 }
+@media (min-width: 768px) {
+  .bg-roadtrip-none {
+    background-image: none !important;
+  }
+}

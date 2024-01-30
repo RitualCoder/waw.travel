@@ -10,7 +10,7 @@ require dirname(__DIR__, 2) . '/config/apiKey.php';
 ?>
 
 <div class="w-full">
-    <section class="flex md:gap-8 items-center bg-home md:bg-none bg-cover bg-no-repeat bg-center py-4 justify-center md:flex md:py-0 md:h-80 md:justify-normal lg:justify-between lg:h-96 overflow-hidden lg:gap-0">
+    <section style="background-image: url(<?= $data['roadtrip']->getImage() ?>)" class="bg-roadtrip-none flex md:gap-8 items-center bg-cover bg-no-repeat bg-center py-4 justify-center md:flex md:py-0 md:h-80 md:justify-normal lg:justify-between lg:h-96 overflow-hidden lg:gap-0">
         <div class="md:w-2/5 xl:w-2/6 flex justify-end lg:justify-center items-center">
             <div class="bg-white shadow-main rounded-main py-4 px-8 items-center flex flex-col gap-4 md:justify-between relative">
                 <h1 class="text-xl text-center font-medium font-second w-4/5"><?= $data['roadtrip']->getName() ?></h1>
