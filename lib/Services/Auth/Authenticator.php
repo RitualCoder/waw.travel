@@ -2,6 +2,8 @@
 
 namespace Plugo\Services\Auth;
 
+use App\Manager\UserManager;
+
 class Authenticator
 
 {
@@ -17,6 +19,19 @@ class Authenticator
 
     public function isLoggedIn(): bool
     {
-        return isset($_SESSION['id']);
+
+        // Vérifer si l'utilisateur est connecté
+        if (isset($_SESSION['id'])) {
+            $userManager = new UserManager();
+            $user = $userManager->find($_SESSION['id']);
+            
+            // Vérifier si l'utilisateur existe toujours en base de données (si il n'a pas été supprimé)
+            if ($user) {
+                return true;
+            } else {
+                unset($_SESSION['id']);
+            }
+        }
+        return false;
     }
 }

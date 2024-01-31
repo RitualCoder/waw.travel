@@ -28,7 +28,9 @@ class ServiceImage
 
     public function delete($filePath)
     {
+        // Vérifier si le fichier existe
         if (file_exists($filePath)) {
+            // Supprimer le fichier
             if (unlink($filePath)) {
                 return true;
             } else {
