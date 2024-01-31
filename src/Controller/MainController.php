@@ -25,4 +25,14 @@ class MainController extends AbstractController
             'flash' => $flash
         ]);
     }
+
+    public function error_404(): void
+    {
+        $this->renderView('main/404.php', [
+            'seo' => [
+                'title' => 'Page introuvable',
+                'description' => 'Page introuvable',
+            ]
+        ]);
+    }
 }

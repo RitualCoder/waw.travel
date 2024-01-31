@@ -1,22 +1,26 @@
 <?php
+
 namespace Plugo\Router;
 
 require dirname(__DIR__, 2) . '/config/routes.php';
 
-class Router {
+class Router
+{
 
 	private $routes;
 	private $availablePaths;
 	private $requestedPath;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->routes = ROUTES;
 		$this->availablePaths = array_keys($this->routes);
 		$this->requestedPath = isset($_GET['path']) ? $_GET['path'] : '/';
 		$this->parseRoutes();
 	}
 
-	private function parseRoutes() {
+	private function parseRoutes()
+	{
 		$explodedRequestedPath = $this->explodePath($this->requestedPath);
 		$params = [];
 
@@ -40,6 +44,8 @@ class Router {
 				if ($foundMatch) {
 					$route = $this->routes[$candidatePath];
 					break;
+				} else {
+					$route = $this->routes['/404'];
 				}
 			}
 		}
@@ -48,15 +54,15 @@ class Router {
 			$controller = new $route['controller'];
 			$controller->{$route['method']}(...$params);
 		}
-
 	}
 
-	private function explodePath(string $path) {
+	private function explodePath(string $path)
+	{
 		return explode("/", rtrim(ltrim($path, '/'), '/'));
 	}
 
-	private function isParam(string $candidatePathPart) {
+	private function isParam(string $candidatePathPart)
+	{
 		return str_contains($candidatePathPart, '{') && str_contains($candidatePathPart, '}');
 	}
-
 }
