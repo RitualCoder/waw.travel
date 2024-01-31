@@ -4,6 +4,9 @@ namespace App\Manager;
 
 use App\Entity\User;
 use Plugo\Manager\AbstractManager;
+use App\Manager\RoadtripManager;
+use App\Manager\ImageManager;
+use Plugo\Services\upload\ServiceImage;
 
 class UserManager extends AbstractManager
 {
@@ -70,6 +73,18 @@ class UserManager extends AbstractManager
 
     public function delete(User $user): \PDOStatement
     {
+        // Delete all roadtrips with their images
+        $roadtripManager = new RoadtripManager();
+        $uploadImage = new ServiceImage();
+        $roadtrips = $roadtripManager->findBy(['user_id' => $user->getId()]);
+        foreach ($roadtrips as $roadtrip) {
+            $imageManager = new ImageManager();
+            $images = $imageManager->findBy(['id' => $roadtrip->getImage_id()]);
+            foreach ($images as $image) {
+                $uploadImage->delete($image->getFilepath());
+                $imageManager->delete($image);
+            }
+        }
         return $this->remove(User::class, $user->getId());
     }
 }
