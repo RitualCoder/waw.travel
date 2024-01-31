@@ -46,4 +46,9 @@ const ROUTES = [
         'method' => 'edit',
         'name' => 'app_roadtrip_edit'
     ],
+    '/404' => [
+        'controller' => App\Controller\MainController::class,
+        'method' => 'error_404',
+        'name' => 'app_error_404'
+    ],
 ];
