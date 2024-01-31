@@ -18,7 +18,7 @@
                     <input name="password" id="password" type="password" placeholder="Mot de passe" class="border-blue text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-base lg:px-4 lg:py-3 focus:outline-none focus:border-2 focus:border-blue focus:ring-0" required>
                     <button type="submit" class="bg-blue text-sm rounded-main px-4 py-2 mx-auto text-white lg:text-lg lg:px-6 lg:py-3">Se connecter</button>
                 </form>
-                <p class="text-center">Vous n’avez pas encore un compte ? <a href="?path=/inscription" class="text-blue">S’inscrire</a></p>
+                <p class="text-center">Vous n’avez pas encore un compte ? <a href="/inscription" class="text-blue">S’inscrire</a></p>
             </div>
         </div>
         <img src="images/login.jpg" alt="login image" class="hidden md:flex lg:flex md:h-full lg:h-full md:w-1/2 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">

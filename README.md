@@ -2,7 +2,7 @@
 
 # Des infos pour dev avec ce framework... 😊
 
-## fichier dans le dossier de config : 
+## fichier dans le dossier config : 
 - les routes
 - la connexion à la bdd
 - la connexion aux APIs
@@ -23,12 +23,12 @@
 - l'index.php qui est le point d'entrée de l'application
 - les dossiers css et js et images
 
-## fichier dans le src : 
+## fichier dans le dossier src : 
 - le dossier Controller qui utilise les fonctions du framework et qui renvoie à la vue
 - le dossier Entity qui contient les entitées
 - le dossier Manager qui contient les informations permettant de gérer les manipulations de données des entitées
 
-## fichier dans le template : 
+## fichier dans le dossier template : 
 - le layout qui est la base du rendu client
 - les partials (ex: header, footer, sidebar)
 - les pages (généralement présente dans un dossier par controller)
@@ -50,3 +50,7 @@
 ## Ajouter la clé API Google Maps
 - Créer le fichier **apiKey.php** dans le dossier **config** à partir du fichier **apiKey.exemple.php**
 - Ajouter votre clé API Google Maps
+
+
+## Édition .htaccess (réécriture d'url)
+- Dans le fichier **.htaccess** dans le dossier **public** décommenter la ligne correspondante selon si vous avez un virtual host ou non.

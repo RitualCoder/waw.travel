@@ -15,7 +15,7 @@
   <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 lg:px-10 xl:px-24 xl:gap-10 lg:pt-12 gap-4">
     <?php foreach ($data['roadtrips'] as $roadtrip) : ?>
       <article class="shadow-main rounded-main py-4 px-4">
-        <a href=<?= '?path=/roadtrip/' . $roadtrip->getId() ?>>
+        <a href=<?= '/roadtrip/' . $roadtrip->getId() ?>>
           <img src=<?= $roadtrip->getImage() ?> alt=<?= $roadtrip->getName() ?> class="rounded-main max-h-60 md:max-h-80 w-full object-cover" />
 
           <div class="py-2 flex flex-col gap-4">
