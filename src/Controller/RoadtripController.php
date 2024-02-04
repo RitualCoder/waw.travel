@@ -50,13 +50,19 @@ class RoadtripController extends AbstractController
             $this->redirectToRoute('/', ['flash' => $flash->flash('home', 'Le roadtrip n\'existe pas ou plus', "error")]);
         }
 
+        $canEdit = false;
+        
+        if (isset($_SESSION['id']) && $roadtrip->getUser_id() == $_SESSION['id']) {
+            $canEdit = true;
+        }
+
         $this->renderView('roadtrip/show.php', [
             'seo' => [
                 'title' => $roadtrip->getName(),
                 'description' => 'Découvrez le roadtrip ' . $roadtrip->getName() . ' sur Waw.travel',
             ],
             'roadtrip' => $roadtrip,
-            'canEdit' => $_SESSION['id'] == $roadtrip->getUser_id() ? true : false,
+            'canEdit' => $canEdit,
         ]);
     }
 
@@ -204,7 +210,7 @@ class RoadtripController extends AbstractController
             if (isset($_FILES['file'])) {
 
                 $uploadImage = new ServiceImage();
-                
+
                 try {
                     $uploadDir = dirname(__DIR__, 2) . "/public/images/uploads/";
                     $filePath = $uploadImage->upload($_FILES["file"], $uploadDir);
@@ -288,7 +294,7 @@ class RoadtripController extends AbstractController
 
         // suppression roadtrip
         if (isset($_POST['delete-roadtrip'])) {
-            
+
             $uploadImage = new ServiceImage();
             $uploadImage->delete($image->getFilepath());
             $roadtripDelete = $RoadtripManager->find($id);
