@@ -38,7 +38,7 @@ require dirname(__DIR__, 2) . '/config/apiKey.php';
                 </span>
                 <p class="font-medium text-xs md:text-sm">Par <span class="text-blue"><?= $username ?></span></p>
                 <?php if ($data['canEdit'] === true) : ?>
-                    <a href=<?= '/roadtrip/' . $data['roadtrip']->getId() . '/editer' ?> class="bg-orange rounded-main p-2 cursor-pointer absolute bottom-3 right-3">
+                    <a href=<?= '?path=/roadtrip/' . $data['roadtrip']->getId() . '/editer' ?> class="bg-orange rounded-main p-2 cursor-pointer absolute bottom-3 right-3">
                         <img src="images/icons/pen.svg" alt="edit icon" class="h-4" />
                     </a>
                 <?php endif; ?>

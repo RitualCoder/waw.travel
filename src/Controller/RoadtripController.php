@@ -41,14 +41,9 @@ class RoadtripController extends AbstractController
 
     public function show($id): void
     {
-        // Vérification du type de la variable $id
-        if (!is_int($id)) {
-            $this->redirectToRoute('/404');
-        }
+        $flash = new Flash();
         $RoadtripManager = new RoadtripManager();
         $roadtrip = $RoadtripManager->find($id);
-
-        $flash = new Flash();
 
 
         if (!$roadtrip) {
@@ -172,11 +167,6 @@ class RoadtripController extends AbstractController
     }
     public function edit($id): void
     {
-        // Vérification du type de la variable $id
-        if (!is_int($id)) {
-            $this->redirectToRoute('/404');
-        }
-
         $authenticator = new Authenticator();
         $flash = new Flash();
 

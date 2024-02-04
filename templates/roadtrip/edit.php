@@ -8,7 +8,7 @@
 
     <h1 id="roadtrip" class="text-xl text-orange font-medium font-second lg:text-4xl">Éditer un road trip</h1>
 
-    <a href=<?= "/roadtrip/" . $data['roadtrip']->getId() ?> class="border-orange border-2 text-orange font-medium py-2 px-6 rounded-main mt-4 lg:text-lg lg:px-6 lg:py-3">Voir le road trip</a>
+    <a href=<?= "?path=/roadtrip/" . $data['roadtrip']->getId() ?> class="border-orange border-2 text-orange font-medium py-2 px-6 rounded-main mt-4 lg:text-lg lg:px-6 lg:py-3">Voir le road trip</a>
 
     <form method="post" enctype="multipart/form-data" class="flex flex-col gap-4 w-4/5 mx-auto mt-6 md:w-3/5">
         <input type="hidden" name="edit-roadtrip">
