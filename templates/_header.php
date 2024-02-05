@@ -7,12 +7,18 @@
             <li><a href="?path=/" class="nav-link relative duration-800 block
     after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
     hover:after:origin-left hover:after:scale-x-100">Accueil</a></li>
-            <li><a href="?path=/roadtrips" class="nav-link relative duration-800 block
-    after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
-    hover:after:origin-left hover:after:scale-x-100">Carnet de voyage</a></li>
-            <li><a href="?path=/profil" class="nav-link relative duration-800 block
+            <?php if (isset($_SESSION['id'])) : ?>
+                <li><a href="?path=/roadtrips" class="nav-link relative duration-800 block
+after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
+hover:after:origin-left hover:after:scale-x-100">Carnet de voyage</a></li>
+                <li><a href="?path=/profil" class="nav-link relative duration-800 block
     after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
     hover:after:origin-left hover:after:scale-x-100">Mon profil</a></li>
+            <?php else : ?>
+                <li><a href="?path=/connexion" class="nav-link relative duration-800 block
+        after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
+        hover:after:origin-left hover:after:scale-x-100">Connexion</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 
@@ -27,12 +33,18 @@
             <li><a href="?path=/" class="nav-link nav-link-mobile relative duration-800 block
     after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
     hover:after:origin-left hover:after:scale-x-100">Accueil</a></li>
-            <li><a href="?path=/roadtrips" class="nav-link nav-link-mobile relative duration-800 block
-    after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
-    hover:after:origin-left hover:after:scale-x-100">Carnet de voyage</a></li>
-            <li><a href="?path=/profil" class="nav-link nav-link-mobile relative duration-800 block
+            <?php if (isset($_SESSION['id'])) : ?>
+                <li><a href="?path=/roadtrips" class="nav-link nav-link-mobile relative duration-800 block
+after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
+hover:after:origin-left hover:after:scale-x-100">Carnet de voyage</a></li>
+                <li><a href="?path=/profil" class="nav-link nav-link-mobile relative duration-800 block
     after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
     hover:after:origin-left hover:after:scale-x-100">Mon profil</a></li>
+            <?php else : ?>
+                <li><a href="?path=/connexion" class="nav-link nav-link-mobile relative duration-800 block
+    after:absolute after:content-[''] after:top-full after:h-0.5 after:w-full after:left-0 after:bg-blue after:rounded-full after:origin-right after:scale-x-0 after:transition-transform after:duration-500
+    hover:after:origin-left hover:after:scale-x-100">Connexion</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 </header>
@@ -44,7 +56,7 @@
     var activeLink = document.querySelector('.nav-link[href="' + currentPath + '"]');
     var activeLinkMobile = document.querySelector('.nav-link-mobile[href="' + currentPath + '"]');
     if (activeLink) {
-        activeLink.classList.replace('after:scale-x-0','after:scale-x-100');
+        activeLink.classList.replace('after:scale-x-0', 'after:scale-x-100');
         activeLinkMobile.classList.add('text-blue');
     }
     document.getElementById('burgerIcon').addEventListener('click', function() {
