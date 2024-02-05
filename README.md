@@ -50,7 +50,3 @@
 ## Ajouter la clé API Google Maps
 - Créer le fichier **apiKey.php** dans le dossier **config** à partir du fichier **apiKey.exemple.php**
 - Ajouter votre clé API Google Maps
-
-
-## Édition .htaccess (réécriture d'url)
-- Dans le fichier **.htaccess** dans le dossier **public** décommenter la ligne correspondante selon si vous avez un virtual host ou non.
