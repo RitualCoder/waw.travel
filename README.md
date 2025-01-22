@@ -1,56 +1,67 @@
-# waw.travel
+<img src="public/images/favicon.svg" alt="waw.travel" width="100"/>
 
-# Des infos pour dev avec ce framework... 😊
+# Waw.travel
 
-## fichier dans le dossier config : 
-- les routes
-- la connexion à la bdd
-- la connexion aux APIs
-- etc...
+Waw.travel est une plateforme communautaire gratuite permettant aux voyageurs de partager leurs road trips avec leur famille et leurs amis via une page web publique.
 
-## fichier dans le dossier lib : 
-- autoload.php qui permet de ne pas faire les appels de fichier (require, include)
-- le dossier Router
-    - Permet de faire le dispatch 
-- le dossier Controller
-    - Contient les classes propres au framework qui ne peuvent être appelées qu'en extends des autres classes
-- le dossier Manager
-    - Contient les informations permettant de gérer les manipulations de données
-- le dossier Service
-    - Contient les services suplémentaires tel que la protection aux failles XSS, l'upload d'image, l'authentification et les messages flash
+---
 
-## fichier dans le dossier public : 
-- l'index.php qui est le point d'entrée de l'application
-- les dossiers css et js et images
+## Fonctionnalités
 
-## fichier dans le dossier src : 
-- le dossier Controller qui utilise les fonctions du framework et qui renvoie à la vue
-- le dossier Entity qui contient les entitées
-- le dossier Manager qui contient les informations permettant de gérer les manipulations de données des entitées
+1. Authentification
+2. Gestion des road trips
 
-## fichier dans le dossier template : 
-- le layout qui est la base du rendu client
-- les partials (ex: header, footer, sidebar)
-- les pages (généralement présente dans un dossier par controller)
+- Un road trip est défini par :
+  - `Intitulé` : Nom du road trip.
+  - `Type de véhicule` : Par exemple, moto, van, voiture.
+- `Checkpoints` :
+ Chaque road trip inclut au moins deux checkpoints (départ et arrivée)
+  - `Nom du spot` : Identifiant descriptif du lieu.
+  - `Coordonnées Google Maps` : données GPS pour localisation.
+  - `Dates d'arrivée et de départ` : Pour chaque checkpoint.
 
-## tailwind css
-- Installer tailwind
-`npm install`
-- Lancer tailwind
-`npm run watch`
-- Attention lors de la création de l'output il faut modifier le lien présent dans le layout pour qu'il soit de cette manière
-`<link href="outputStyles.css" rel="stylesheet">`
-- Build tailwind pour la mise en production
-`npm run build`
+3. Page publique du road trip
 
-## Installer la base de donnée
-- Créer le fichier **database.php** dans le dossier **config** à partir du fichier **database.exemple.php**
-- Ajouter les informations nécessaires à la connexion à la base de données
+- Une URL unique pour chaque road trip : <https://waw.travel/{id-voyage}>.
+- Présentation détaillée incluant les informations des checkpoints.
+- API Google Maps : Calcul et affichage de la distance totale du trajet.
+- Image de couverture : Permet de personnaliser la page publique du road trip.
 
-## Ajouter la clé API Google Maps
-- Créer le fichier **apiKey.php** dans le dossier **config** à partir du fichier **apiKey.exemple.php**
-- Ajouter votre clé API Google Maps
+---
+
+## Installation
+
+**Installez et configurez le framework PHP [Plugo](PLUGO.md)**
+
+---
+
+### Aperçu du projet
+
+### Page d'accueil
+
+<img src="public/images/home.png" alt="Page d'accueil" width="40%"/>
+
+### Page de présentation d'un road trip
+
+<img src="public/images/road-trip.png" alt="Page de présentation d'un road trip" width="40%"/>
+
+### Page de connexion
+
+<img src="public/images/login.png" alt="Page de connexion" width="40%"/>
+
+### Page d'inscription
+
+<img src="public/images/register.png" alt="Page d'inscription" width="40%"/>
+
+### Page de liste des road trips
+
+<img src="public/images/list.png" alt="Page de liste des road trips" width="40%"/>
+
+### Page de création d'un road trip
+
+<img src="public/images/create.png" alt="Page de création d'un road trip" width="40%"/>
 
 
-## Édition .htaccess (réécriture d'url)
-- Dans le fichier **.htaccess** dans le dossier **public** décommenter la ligne correspondante selon si vous avez un virtual host ou non.
+### Page de profil
+
+<img src="public/images/profil.png" alt="Page de profil" width="40%"/>
