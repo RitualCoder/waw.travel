@@ -41,18 +41,19 @@ class RoadtripController extends AbstractController
 
     public function show($id): void
     {
-        // Vérification du type de la variable $id
-        if (!is_int($id)) {
-            $this->redirectToRoute('/404');
-        }
+        $flash = new Flash();
         $RoadtripManager = new RoadtripManager();
         $roadtrip = $RoadtripManager->find($id);
-
-        $flash = new Flash();
 
 
         if (!$roadtrip) {
             $this->redirectToRoute('/', ['flash' => $flash->flash('home', 'Le roadtrip n\'existe pas ou plus', "error")]);
+        }
+
+        $canEdit = false;
+        
+        if (isset($_SESSION['id']) && $roadtrip->getUser_id() == $_SESSION['id']) {
+            $canEdit = true;
         }
 
         $this->renderView('roadtrip/show.php', [
@@ -61,7 +62,7 @@ class RoadtripController extends AbstractController
                 'description' => 'Découvrez le roadtrip ' . $roadtrip->getName() . ' sur Waw.travel',
             ],
             'roadtrip' => $roadtrip,
-            'canEdit' => $_SESSION['id'] == $roadtrip->getUser_id() ? true : false,
+            'canEdit' => $canEdit,
         ]);
     }
 
@@ -172,11 +173,6 @@ class RoadtripController extends AbstractController
     }
     public function edit($id): void
     {
-        // Vérification du type de la variable $id
-        if (!is_int($id)) {
-            $this->redirectToRoute('/404');
-        }
-
         $authenticator = new Authenticator();
         $flash = new Flash();
 
@@ -214,7 +210,7 @@ class RoadtripController extends AbstractController
             if (isset($_FILES['file'])) {
 
                 $uploadImage = new ServiceImage();
-                
+
                 try {
                     $uploadDir = dirname(__DIR__, 2) . "/public/images/uploads/";
                     $filePath = $uploadImage->upload($_FILES["file"], $uploadDir);
@@ -298,7 +294,7 @@ class RoadtripController extends AbstractController
 
         // suppression roadtrip
         if (isset($_POST['delete-roadtrip'])) {
-            
+
             $uploadImage = new ServiceImage();
             $uploadImage->delete($image->getFilepath());
             $roadtripDelete = $RoadtripManager->find($id);

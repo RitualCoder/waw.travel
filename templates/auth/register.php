@@ -19,7 +19,7 @@
                     <input name="password" id="password" type="password" placeholder="Mot de passe" class="border-orange text-sm rounded-main border-2 py-1 px-3 placeholder:text-black focus-visible:outline-none lg:text-base lg:px-4 lg:py-3 focus:outline-none focus:border-2 focus:border-orange focus:ring-0" required>
                     <button type="submit" class="bg-orange text-sm rounded-main px-4 py-2 mx-auto text-white lg:text-lg lg:px-6 lg:py-3">S'inscrire</button>
                 </form>
-                <p class="text-center">Vous avez déjà un compte ? <a href="/connexion" class="text-orange">Se connecter</a></p>
+                <p class="text-center">Vous avez déjà un compte ? <a href="?path=/connexion" class="text-orange">Se connecter</a></p>
             </div>
         </div>
         <img src="images/register.jpg" alt="login image" class="hidden md:flex lg:flex md:h-full lg:h-full md:w-1/2 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">

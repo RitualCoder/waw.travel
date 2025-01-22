@@ -16,9 +16,9 @@
                     <img src="images/icons/earth.svg" alt="earth icon" class="h-6">
                     <p class="font-medium text-sm md:text-base"><?= $data['user']->getRoadtripsNumber() ?> roadtrips</p>
                 </span>
-                <a href="/roadtrips" class="bg-orange text-white py-2 px-6 rounded-main">Mon carnet de voyage</a>
+                <a href="?path=/roadtrips" class="bg-orange text-white py-2 px-6 rounded-main">Mon carnet de voyage</a>
                 <p class="font-medium text-xs md:text-sm">Membre depuis le : <span class="text-blue"><?= date('d/m/Y', strtotime($data['user']->getCreated_at())) ?></span></p>
-                <a href="/deconnexion" class="bg-red text-white rounded-main py-2 px-6">Se déconnecter</a>
+                <a href="?path=/deconnexion" class="bg-red text-white rounded-main py-2 px-6">Se déconnecter</a>
             </div>
         </div>
         <img src="images/profil.jpg" alt="login image" class="hidden md:flex lg:flex md:h-full lg:h-full md:w-1/2 xl:w-4/6 overflow-hidden object-cover object-center rounded-bl-main m-0">

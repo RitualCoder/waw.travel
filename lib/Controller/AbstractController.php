@@ -17,7 +17,7 @@ abstract class AbstractController
 
 	protected function redirectToRoute(string $path, array $params = []): void
 	{
-		$uri = $path;
+		$uri = $_SERVER['SCRIPT_NAME'] . "?path=" . $path;
 
 		if (!empty($params)) {
 			$strParams = [];

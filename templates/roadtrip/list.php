@@ -8,15 +8,16 @@
     <section class="bg-roadtrips bg-center bg-no-repeat bg-cover h-60 lg:h-96">
         <div class="flex flex-col text-white justify-center items-center w-full h-full bg-filter gap-4 px-4 lg:gap-8 py-2">
             <h1 class="font-second text-xl lg:text-4xl">Mon carnet de voyage</h1>
-            <a href="/roadtrip/ajouter" class="bg-orange text-xs lg:text-sm py-2 px-4 lg:py-4 lg:px-8 lg:gap-3 rounded-main flex gap-1 items-center">Ajouter un road trip<img src="images/icons/add.svg" alt="add icon" class="h-4 lg:h-6"></a>
+            <a href="?path=/roadtrip/ajouter" class="bg-orange text-xs lg:text-sm py-2 px-4 lg:py-4 lg:px-8 lg:gap-3 rounded-main flex gap-1 items-center">Ajouter un road trip<img src="images/icons/add.svg" alt="add icon" class="h-4 lg:h-6"></a>
         </div>
     </section>
 
     <section class="grid pt-8 px-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 lg:px-10 xl:px-24 xl:gap-10 lg:pt-12 gap-4">
         <?php foreach ($data['roadtrips'] as $roadtrip) : ?>
             <article class="shadow-main rounded-main py-4 px-4 relative">
-                <a href=<?= '/roadtrip/' . $roadtrip->getId() ?>>
-                    <img src=<?= $roadtrip->getImage() ?> alt=<?= $roadtrip->getName() ?> class="rounded-main max-h-60 md:max-h-80 w-full object-cover" />
+                <a href=<?= '?path=/roadtrip/' . $roadtrip->getId() ?>>
+                    <img src=<?= $roadtrip->getImage() ?> alt=<?= $roadtrip->getName() ?> class="rounded-main h-60
+                    w-full object-cover" />
 
                     <div class="py-2 flex flex-col gap-4">
                         <h2 class="text-xl font-second font-medium text-blue"><?= $roadtrip->getName() ?></h2>
@@ -40,7 +41,7 @@
                         </span>
                     </div>
                 </a>
-                <a href=<?= '/roadtrip/' . $roadtrip->getId() . '/editer' ?> class="absolute top-6 right-6 bg-orange rounded-main p-2">
+                <a href=<?= '?path=/roadtrip/' . $roadtrip->getId() . '/editer' ?> class="absolute top-6 right-6 bg-orange rounded-main p-2">
                     <img src="images/icons/pen.svg" alt="edit icon" class="cursor-pointer"/>
                 </a>
             </article>
